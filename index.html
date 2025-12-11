@@ -22,19 +22,17 @@
     .page-wrapper {
       min-height: 100vh;
       background: linear-gradient(to bottom, #000 0%, #000 60%, #050608 100%);
-      color: inherit;
       position: relative;
     }
 
     /* FIXED LOGO (TOP LEFT) */
     .logo {
       position: fixed;
-      top: 24px;            /* match NAV top */
+      top: 24px;
       left: 24px;
       z-index: 20;
-      height: 48px;         /* same "row height" as NAV */
       display: flex;
-      align-items: center;   /* centers logo inside that row */
+      align-items: center;
       justify-content: center;
     }
 
@@ -50,20 +48,19 @@
       top: 24px;
       right: 24px;
       z-index: 20;
-      height: 48px;         /* same "row height" as LOGO */
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 32px; /* slightly larger to match logo */
       font-weight: 600;
-      letter-spacing: 0.15em;
-      font-size: 12px;
+      letter-spacing: 0.18em;
+      font-size: 14px; /* bigger menu text */
       text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 32px;
     }
 
     .nav a {
@@ -90,17 +87,17 @@
     .menu-toggle {
       display: none;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       cursor: pointer;
       font-weight: 600;
-      letter-spacing: 0.15em;
-      font-size: 12px;
+      letter-spacing: 0.18em;
+      font-size: 14px; /* bigger MENU label */
       text-transform: uppercase;
     }
 
     .menu-icon {
-      width: 18px;
-      height: 12px;
+      width: 22px; /* bigger hamburger */
+      height: 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -109,7 +106,7 @@
     .menu-icon span {
       display: block;
       height: 2px;
-      background: #f2efe9;
+      background: #c9a45c; /* gold */
       border-radius: 999px;
     }
 
@@ -144,7 +141,6 @@
       letter-spacing: 0.12em;
       font-size: 12px;
       text-transform: uppercase;
-      border-radius: 0;
       transition: background 0.2s ease-out, transform 0.1s ease-out;
     }
 
@@ -174,34 +170,27 @@
       display: block;
     }
 
-    /* BIG CIRCLE BUTTON (like your example) */
-    .scroll-btn {
-      width: 84px;
-      height: 84px;
-      border-radius: 999px;
-      border: 2px solid rgba(242, 239, 233, 0.85);
-      display: inline-flex;
+    .scroll-button {
+      width: 52px; /* slightly smaller */
+      height: 52px;
+      border-radius: 50%;
+      border: 1.5px solid #c9a45c; /* gold ring */
+      display: flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
-      color: #f2efe9;
       cursor: pointer;
-      transition: transform 0.12s ease-out, background 0.2s ease-out, border-color 0.2s ease-out;
+      transition: transform 0.2s ease-out, opacity 0.2s ease-out;
     }
 
-    .scroll-btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(242, 239, 233, 1);
-    }
-
-    .scroll-btn:active {
-      transform: translateY(1px);
+    .scroll-button:hover {
+      transform: translateY(2px);
+      opacity: 0.85;
     }
 
     .scroll-arrow {
-      font-size: 26px;
+      font-size: 18px; /* slightly smaller arrow */
+      color: #c9a45c; /* gold arrow */
       line-height: 1;
-      transform: translateY(-1px);
     }
 
     /* MOBILE */
@@ -209,12 +198,12 @@
       .nav-links {
         display: none;
         position: fixed;
-        top: 60px;
+        top: 72px;
         right: 24px;
         flex-direction: column;
         background: rgba(0, 0, 0, 0.95);
-        padding: 16px 20px;
-        gap: 16px;
+        padding: 18px 22px;
+        gap: 18px;
         border: 1px solid rgba(255, 255, 255, 0.06);
       }
 
@@ -230,7 +219,8 @@
 </head>
 <body>
   <div class="page-wrapper">
-    <!-- TOP LEFT LOGO (GOLD) -->
+
+    <!-- TOP LEFT LOGO -->
     <div class="logo">
       <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo" />
     </div>
@@ -253,25 +243,20 @@
       </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <main class="hero">
       <h1 class="title">VANGUARD HOSTS</h1>
       <button class="cta-btn" type="button">BOOK NOW</button>
 
-      <!-- SCROLL DOWN (logo removed, button bigger + clickable) -->
+      <!-- SCROLL DOWN -->
       <div class="scroll-down-wrapper">
         <span class="scroll-label">SCROLL DOWN</span>
-        <a class="scroll-btn" href="#dj" aria-label="Scroll down">
-          <span class="scroll-arrow">&#8595;</span>
-        </a>
+        <div class="scroll-button" onclick="document.getElementById('dj').scrollIntoView({ behavior: 'smooth' });">
+          <div class="scroll-arrow">&#8595;</div>
+        </div>
       </div>
     </main>
 
-    <!-- Dummy sections so the scroll button + nav links work (keep or replace with your real sections) -->
-    <section id="dj" style="min-height: 100vh;"></section>
-    <section id="photography" style="min-height: 100vh;"></section>
-    <section id="marketing" style="min-height: 100vh;"></section>
-    <section id="contact" style="min-height: 100vh;"></section>
   </div>
 
   <script>
