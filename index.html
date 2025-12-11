@@ -29,11 +29,12 @@
     /* FIXED LOGO (TOP LEFT) */
     .logo {
       position: fixed;
-      top: 20px;
+      top: 24px;            /* match NAV top */
       left: 24px;
       z-index: 20;
+      height: 48px;         /* same "row height" as NAV */
       display: flex;
-      align-items: center;
+      align-items: center;   /* centers logo inside that row */
       justify-content: center;
     }
 
@@ -49,6 +50,7 @@
       top: 24px;
       right: 24px;
       z-index: 20;
+      height: 48px;         /* same "row height" as LOGO */
       display: flex;
       align-items: center;
       gap: 24px;
@@ -168,25 +170,38 @@
     }
 
     .scroll-label {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       display: block;
     }
 
-    .scroll-logo {
-      display: flex;
+    /* BIG CIRCLE BUTTON (like your example) */
+    .scroll-btn {
+      width: 84px;
+      height: 84px;
+      border-radius: 999px;
+      border: 2px solid rgba(242, 239, 233, 0.85);
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
+      text-decoration: none;
+      color: #f2efe9;
+      cursor: pointer;
+      transition: transform 0.12s ease-out, background 0.2s ease-out, border-color 0.2s ease-out;
     }
 
-    .scroll-logo img {
-      height: 20px;
-      width: 20px;
-      object-fit: contain;
+    .scroll-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(242, 239, 233, 1);
+    }
+
+    .scroll-btn:active {
+      transform: translateY(1px);
     }
 
     .scroll-arrow {
-      font-size: 16px;
+      font-size: 26px;
+      line-height: 1;
+      transform: translateY(-1px);
     }
 
     /* MOBILE */
@@ -217,7 +232,6 @@
   <div class="page-wrapper">
     <!-- TOP LEFT LOGO (GOLD) -->
     <div class="logo">
-      <!-- Replace src with your transparent gold logo file path -->
       <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo" />
     </div>
 
@@ -244,16 +258,20 @@
       <h1 class="title">VANGUARD HOSTS</h1>
       <button class="cta-btn" type="button">BOOK NOW</button>
 
-      <!-- SCROLL DOWN -->
+      <!-- SCROLL DOWN (logo removed, button bigger + clickable) -->
       <div class="scroll-down-wrapper">
         <span class="scroll-label">SCROLL DOWN</span>
-        <div class="scroll-logo">
-          <!-- Same logo, smaller -->
-          <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo Small" />
-        </div>
-        <div class="scroll-arrow">&#8595;</div>
+        <a class="scroll-btn" href="#dj" aria-label="Scroll down">
+          <span class="scroll-arrow">&#8595;</span>
+        </a>
       </div>
     </main>
+
+    <!-- Dummy sections so the scroll button + nav links work (keep or replace with your real sections) -->
+    <section id="dj" style="min-height: 100vh;"></section>
+    <section id="photography" style="min-height: 100vh;"></section>
+    <section id="marketing" style="min-height: 100vh;"></section>
+    <section id="contact" style="min-height: 100vh;"></section>
   </div>
 
   <script>
