@@ -1,10 +1,268 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Vanguard Hosts</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VANGUARD HOSTS</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #000000;
+      color: #f2efe9;
+      overflow-x: hidden;
+    }
+
+    .page-wrapper {
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #000 0%, #000 60%, #050608 100%);
+      color: inherit;
+      position: relative;
+    }
+
+    /* FIXED LOGO (TOP LEFT) */
+    .logo {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo img {
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
+    }
+
+    /* NAV (TOP RIGHT) */
+    .nav {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav a {
+      color: #f2efe9;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: #f2efe9;
+      transition: width 0.2s ease-out;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .menu-icon {
+      width: 18px;
+      height: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-icon span {
+      display: block;
+      height: 2px;
+      background: #f2efe9;
+      border-radius: 999px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .title {
+      font-size: clamp(40px, 6vw, 100px);
+      letter-spacing: 0.2em;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #f2efe9;
+    }
+
+    .cta-btn {
+      margin-top: 40px;
+      padding: 16px 64px;
+      border: none;
+      cursor: pointer;
+      background: #262626;
+      color: #f2efe9;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      text-transform: uppercase;
+      border-radius: 0;
+      transition: background 0.2s ease-out, transform 0.1s ease-out;
+    }
+
+    .cta-btn:hover {
+      background: #2f2f2f;
+      transform: translateY(-1px);
+    }
+
+    .cta-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* SCROLL DOWN AREA */
+    .scroll-down-wrapper {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .scroll-label {
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .scroll-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .scroll-logo img {
+      height: 20px;
+      width: 20px;
+      object-fit: contain;
+    }
+
+    .scroll-arrow {
+      font-size: 16px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        right: 24px;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 16px 20px;
+        gap: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+  </style>
 </head>
-<body style="background:black; color:gold; text-align:center; padding-top:100px;">
-  <h1>Your Vanguard Hosts Website Is LIVE</h1>
-  <p>This is running on GitHub Pages.</p>
+<body>
+  <div class="page-wrapper">
+    <!-- TOP LEFT LOGO (GOLD) -->
+    <div class="logo">
+      <!-- Replace src with your transparent gold logo file path -->
+      <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo" />
+    </div>
+
+    <!-- TOP RIGHT NAV -->
+    <header class="nav">
+      <div class="nav-links" id="navLinks">
+        <a href="#dj">DJ</a>
+        <a href="#photography">Photography</a>
+        <a href="#marketing">Marketing</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="menu-toggle" id="menuToggle">
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span>MENU</span>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main class="hero">
+      <h1 class="title">VANGUARD HOSTS</h1>
+      <button class="cta-btn" type="button">BOOK NOW</button>
+
+      <!-- SCROLL DOWN -->
+      <div class="scroll-down-wrapper">
+        <span class="scroll-label">SCROLL DOWN</span>
+        <div class="scroll-logo">
+          <!-- Same logo, smaller -->
+          <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo Small" />
+        </div>
+        <div class="scroll-arrow">&#8595;</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
