@@ -58,6 +58,11 @@
 
     .nav a { color: #f2efe9; text-decoration: none; position: relative; }
 
+    /* MENU label – slightly bigger ONLY */
+    .menu-toggle span {
+      font-size: 13px; /* was 12px */
+    }
+
     .menu-toggle {
       display: none;
       align-items: center;
@@ -67,17 +72,17 @@
     }
 
     .menu-icon {
-      width: 22px; /* slightly bigger */
+      width: 22px;
       height: 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      margin-top: 2px; /* optical alignment with logo */
+      margin-top: 2px;
     }
 
     .menu-icon span {
       height: 2px;
-      background: #c9a45c; /* GOLD */
+      background: #c9a45c;
       border-radius: 999px;
     }
 
@@ -100,19 +105,18 @@
       text-transform: uppercase;
     }
 
-    /* BOOK NOW – enhanced, same position */
     .cta-btn {
       margin-top: 40px;
       padding: 16px 64px;
       background: transparent;
       color: #f2efe9;
-      border: 2px solid #c9a45c; /* gold square ring */
+      border: 2px solid #c9a45c;
       cursor: pointer;
       font-weight: 600;
       letter-spacing: 0.14em;
       font-size: 12px;
       text-transform: uppercase;
-      transition: background 0.25s ease, color 0.25s ease, transform 0.12s ease;
+      transition: background 0.25s ease, transform 0.12s ease;
     }
 
     .cta-btn:hover {
@@ -120,9 +124,7 @@
       transform: translateY(-1px);
     }
 
-    .cta-btn:active { transform: translateY(1px); }
-
-    /* SCROLL DOWN – SAME SIZE, CENTERED, ANIMATED */
+    /* SCROLL DOWN – circular clickable button */
     .scroll-down-wrapper {
       position: absolute;
       bottom: 48px;
@@ -145,6 +147,7 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto;
+      cursor: pointer;
       animation: float 1.8s ease-in-out infinite;
     }
 
@@ -213,11 +216,14 @@
 
       <div class="scroll-down-wrapper">
         <span class="scroll-label">SCROLL DOWN</span>
-        <div class="scroll-button">
+        <div class="scroll-button" onclick="document.getElementById('dj').scrollIntoView({ behavior: 'smooth' });">
           <div class="scroll-arrow">&#8595;</div>
         </div>
       </div>
     </main>
+
+    <!-- target section -->
+    <section id="dj"></section>
 
   </div>
 
