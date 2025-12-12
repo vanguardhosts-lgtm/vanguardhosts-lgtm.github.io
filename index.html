@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VANGUARD HOSTS</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -12,55 +13,51 @@
     }
 
     body {
-      margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #000000;
+      background: #000;
       color: #f2efe9;
       overflow-x: hidden;
     }
 
     .page-wrapper {
       min-height: 100vh;
-      background: linear-gradient(to bottom, #000 0%, #000 60%, #050608 100%);
       position: relative;
+      background: linear-gradient(to bottom, #000 0%, #000 60%, #050608 100%);
     }
 
-    /* FIXED LOGO (TOP LEFT) */
-    .logo {
+    /* ===== TOP BAR (LOGO + NAV) ===== */
+    .top-bar {
       position: fixed;
       top: 24px;
       left: 24px;
+      right: 24px;
       z-index: 20;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
     }
 
     .logo img {
       height: 80px;
       width: 80px;
       object-fit: contain;
+      display: block;
     }
 
-    /* NAV (TOP RIGHT) */
     .nav {
-      position: fixed;
-      top: 24px;
-      right: 24px;
-      z-index: 20;
       display: flex;
       align-items: center;
-      gap: 32px; /* slightly larger to match logo */
+      gap: 24px;
       font-weight: 600;
-      letter-spacing: 0.18em;
-      font-size: 14px; /* bigger menu text */
+      letter-spacing: 0.15em;
+      font-size: 12px;
       text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
+      gap: 24px;
       align-items: center;
-      gap: 32px;
     }
 
     .nav a {
@@ -77,7 +74,7 @@
       width: 0;
       height: 1px;
       background: #f2efe9;
-      transition: width 0.2s ease-out;
+      transition: width 0.2s ease;
     }
 
     .nav a:hover::after {
@@ -87,36 +84,32 @@
     .menu-toggle {
       display: none;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       cursor: pointer;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      font-size: 14px; /* bigger MENU label */
-      text-transform: uppercase;
+      letter-spacing: 0.15em;
     }
 
     .menu-icon {
-      width: 22px; /* bigger hamburger */
-      height: 14px;
+      width: 18px;
+      height: 12px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .menu-icon span {
-      display: block;
       height: 2px;
-      background: #c9a45c; /* gold */
+      background: #f2efe9;
       border-radius: 999px;
     }
 
-    /* HERO */
+    /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 0 20px;
       position: relative;
@@ -127,21 +120,20 @@
       letter-spacing: 0.2em;
       font-weight: 800;
       text-transform: uppercase;
-      color: #f2efe9;
     }
 
     .cta-btn {
       margin-top: 40px;
       padding: 16px 64px;
-      border: none;
-      cursor: pointer;
       background: #262626;
       color: #f2efe9;
+      border: none;
+      cursor: pointer;
       font-weight: 600;
       letter-spacing: 0.12em;
       font-size: 12px;
       text-transform: uppercase;
-      transition: background 0.2s ease-out, transform 0.1s ease-out;
+      transition: background 0.2s ease, transform 0.1s ease;
     }
 
     .cta-btn:hover {
@@ -153,7 +145,7 @@
       transform: translateY(1px);
     }
 
-    /* SCROLL DOWN AREA */
+    /* ===== SCROLL DOWN ===== */
     .scroll-down-wrapper {
       position: absolute;
       bottom: 48px;
@@ -166,45 +158,27 @@
     }
 
     .scroll-label {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: block;
     }
 
-    .scroll-button {
-      width: 52px; /* slightly smaller */
-      height: 52px;
-      border-radius: 50%;
-      border: 1.5px solid #c9a45c; /* gold ring */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-    }
-
-    .scroll-button:hover {
-      transform: translateY(2px);
-      opacity: 0.85;
-    }
-
     .scroll-arrow {
-      font-size: 18px; /* slightly smaller arrow */
-      color: #c9a45c; /* gold arrow */
-      line-height: 1;
+      margin-top: 6px;
+      font-size: 16px;
     }
 
-    /* MOBILE */
+    /* ===== MOBILE ===== */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
-        position: fixed;
-        top: 72px;
-        right: 24px;
+        position: absolute;
+        top: 48px;
+        right: 0;
         flex-direction: column;
-        background: rgba(0, 0, 0, 0.95);
-        padding: 18px 22px;
-        gap: 18px;
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(0,0,0,0.95);
+        padding: 16px 20px;
+        gap: 16px;
+        border: 1px solid rgba(255,255,255,0.06);
       }
 
       .nav-links.open {
@@ -217,43 +191,43 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page-wrapper">
 
-    <!-- TOP LEFT LOGO -->
-    <div class="logo">
-      <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo" />
-    </div>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="logo">
+        <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo">
+      </div>
 
-    <!-- TOP RIGHT NAV -->
-    <header class="nav">
-      <div class="nav-links" id="navLinks">
-        <a href="#dj">DJ</a>
-        <a href="#photography">Photography</a>
-        <a href="#marketing">Marketing</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="menu-toggle" id="menuToggle">
-        <div class="menu-icon">
-          <span></span>
-          <span></span>
-          <span></span>
+      <nav class="nav">
+        <div class="nav-links" id="navLinks">
+          <a href="#dj">DJ</a>
+          <a href="#photography">Photography</a>
+          <a href="#marketing">Marketing</a>
+          <a href="#contact">Contact</a>
         </div>
-        <span>MENU</span>
-      </div>
-    </header>
+
+        <div class="menu-toggle" id="menuToggle">
+          <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span>MENU</span>
+        </div>
+      </nav>
+    </div>
 
     <!-- HERO -->
     <main class="hero">
       <h1 class="title">VANGUARD HOSTS</h1>
-      <button class="cta-btn" type="button">BOOK NOW</button>
+      <button class="cta-btn">BOOK NOW</button>
 
-      <!-- SCROLL DOWN -->
       <div class="scroll-down-wrapper">
         <span class="scroll-label">SCROLL DOWN</span>
-        <div class="scroll-button" onclick="document.getElementById('dj').scrollIntoView({ behavior: 'smooth' });">
-          <div class="scroll-arrow">&#8595;</div>
-        </div>
+        <div class="scroll-arrow">&#8595;</div>
       </div>
     </main>
 
