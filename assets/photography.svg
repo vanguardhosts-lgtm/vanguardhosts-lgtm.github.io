@@ -1,0 +1,32 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Photographer framing a shot">
+  <defs>
+    <radialGradient id="g1" cx="50%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#c49b44" stop-opacity="0.75"/>
+      <stop offset="70%" stop-color="#0b0b0d" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#050505" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="lines" x1="0%" x2="100%" y1="100%" y2="0%">
+      <stop offset="0%" stop-color="#2d2315" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#584221" stop-opacity="0.55"/>
+      <stop offset="80%" stop-color="#8c6b34" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g1)"/>
+  <g stroke="url(#lines)" stroke-width="2">
+    <line x1="0" y1="900" x2="200" y2="-120" />
+    <line x1="120" y1="900" x2="320" y2="-120" />
+    <line x1="240" y1="900" x2="440" y2="-120" />
+    <line x1="360" y1="900" x2="560" y2="-120" />
+    <line x1="480" y1="900" x2="680" y2="-120" />
+    <line x1="600" y1="900" x2="800" y2="-120" />
+  </g>
+  <g fill="#181818" stroke="#0f0f0f" stroke-width="8" opacity="0.88">
+    <rect x="490" y="260" width="260" height="360" rx="28"/>
+    <rect x="450" y="520" width="340" height="220" rx="40"/>
+    <circle cx="610" cy="440" r="74" fill="#0d0d0f" stroke="#b58a38" stroke-width="10"/>
+    <circle cx="610" cy="440" r="46" fill="#2c2116"/>
+    <circle cx="610" cy="440" r="18" fill="#c49b44"/>
+  </g>
+  <text x="70" y="120" fill="#e7d5be" font-family="'Segoe UI',Arial,sans-serif" font-size="52" letter-spacing="3">Photography</text>
+  <text x="70" y="180" fill="#e7d5be" font-family="'Segoe UI',Arial,sans-serif" font-size="26" letter-spacing="2" opacity="0.8">Placeholder art for provided photo</text>
+</svg>
