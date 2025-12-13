@@ -469,10 +469,10 @@ border:1px solid rgba(255,255,255,.06);
 <!-- TOP RIGHT NAV -->
 <header class="nav">
 <div class="nav-links" id="navLinks">
-<a href="#dj">DJ</a>
-<a href="#photography">Photography</a>
-<a href="#marketing">Marketing</a>
-<a href="#contact">Contact</a>
+<a href="dj.html">DJ</a>
+<a href="photography.html">Photography</a>
+<a href="marketing.html">Marketing</a>
+<a href="contact.html">Contact</a>
 </div>
 <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="navLinks" aria-expanded="false">
 <div class="menu-icon" aria-hidden="true">
@@ -508,11 +508,11 @@ border:1px solid rgba(255,255,255,.06);
 <div class="services-grid">
 <!-- DJ -->
 <article class="service-card" data-reveal>
-<a class="service-media" href="#dj">
+<a class="service-media" href="dj.html">
 <img src="assets/dj.png" alt="DJ performance" />
 </a>
 <div class="service-body">
-<a class="service-pill" href="#dj">DJ</a>
+<a class="service-pill" href="dj.html">DJ</a>
 <div class="service-caption">Your night starts here</div>
 <div class="icons" aria-label="DJ social links">
 <a class="icon-link" href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener" aria-label="DJ Instagram">${/* inline svg below */''}</a>
@@ -525,11 +525,11 @@ border:1px solid rgba(255,255,255,.06);
 
 <!-- PHOTOGRAPHY -->
 <article class="service-card" data-reveal>
-<a class="service-media" href="#photography">
+<a class="service-media" href="photography.html">
 <img src="assets/photography.png" alt="Photography" />
 </a>
 <div class="service-body">
-<a class="service-pill" href="#photography">Photography</a>
+<a class="service-pill" href="photography.html">Photography</a>
 <div class="service-caption">You live it. We capture it</div>
 <div class="icons" aria-label="Photography social links">
 <a class="icon-link" href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener" aria-label="Photography Instagram"></a>
@@ -542,11 +542,11 @@ border:1px solid rgba(255,255,255,.06);
 
 <!-- MARKETING -->
 <article class="service-card" data-reveal>
-<a class="service-media" href="#marketing">
+<a class="service-media" href="marketing.html">
 <img src="assets/marketing.png" alt="Marketing" />
 </a>
 <div class="service-body">
-<a class="service-pill" href="#marketing">Marketing</a>
+<a class="service-pill" href="marketing.html">Marketing</a>
 <div class="service-caption">We make you seen</div>
 <div class="icons" aria-label="Marketing social links">
 <a class="icon-link" href="https://www.instagram.com/vanguard.gallery_/" target="_blank" rel="noopener" aria-label="Marketing Instagram"></a>
@@ -560,71 +560,11 @@ border:1px solid rgba(255,255,255,.06);
 </div>
 </section>
 
-<!-- DJ PAGE SECTION -->
-<section class="detail" id="dj">
-<div class="section-inner">
-<h2>DJ</h2>
-<p>
-Weddings. Birthdays. Corporate. Clubs. Clean transitions, real crowd control, and a premium look.
-</p>
-<div class="quick-links">
-<a href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener">Facebook</a>
-<a href="https://www.tiktok.com/@vanguard.events_" target="_blank" rel="noopener">TikTok</a>
-<a href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener">YouTube</a>
-</div>
-</div>
-</section>
-
-<!-- PHOTOGRAPHY PAGE SECTION -->
-<section class="detail" id="photography">
-<div class="section-inner">
-<h2>Photography</h2>
-<p>
-Crisp, cinematic coverage. Events, portraits, products, and content built for social.
-</p>
-<div class="quick-links">
-<a href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener">Facebook</a>
-<a href="https://www.tiktok.com/@vanguard.events_" target="_blank" rel="noopener">TikTok</a>
-<a href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener">YouTube</a>
-</div>
-</div>
-</section>
-
-<!-- MARKETING PAGE SECTION -->
-<section class="detail" id="marketing">
-<div class="section-inner">
-<h2>Marketing</h2>
-<p>
-Short, sharp promos that sell: businesses, cars, properties, and personal brands.
-</p>
-<div class="quick-links">
-<a href="https://www.instagram.com/vanguard.gallery_/" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener">Facebook</a>
-<a href="https://www.tiktok.com/@vanguard.gallery__" target="_blank" rel="noopener">TikTok</a>
-<a href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener">YouTube</a>
-</div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section class="detail" id="contact">
-<div class="section-inner">
-<h2>Contact</h2>
-<p>
-Drop your date, location, and what you need (DJ / Photo / Marketing). We’ll reply fast.
-</p>
-<div class="quick-links">
-<a href="#top">Back to top</a>
-</div>
-</div>
-</section>
-
 <script>
 // Mobile menu toggle
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
+const ctaBtn = document.querySelector('.cta-btn');
 
 function setExpanded(val){
 menuToggle.setAttribute('aria-expanded', String(val));
@@ -634,6 +574,12 @@ menuToggle.addEventListener('click', () => {
 const isOpen = navLinks.classList.toggle('open');
 setExpanded(isOpen);
 });
+
+if (ctaBtn) {
+ctaBtn.addEventListener('click', () => {
+window.location.href = 'contact.html';
+});
+}
 
 menuToggle.addEventListener('keydown', (e) => {
 if (e.key === 'Enter' || e.key === ' ') {
