@@ -612,21 +612,11 @@
   </section>
 
   <script>
-    // Prevent automatic scroll jumps on refresh and ensure we start at the top
-    window.addEventListener('load', () => {
-      if (location.hash) {
-        history.replaceState(null, '', location.pathname + location.search);
-      }
-
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-      }
-
-      requestAnimationFrame(() => {
-        window.scrollTo(0, 0);
-        requestAnimationFrame(() => window.scrollTo(0, 0));
-      });
-    });
+    // Prevent the browser from restoring scroll position on refresh
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
 
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
