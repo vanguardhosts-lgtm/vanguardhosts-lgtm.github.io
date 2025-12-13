@@ -255,19 +255,29 @@
     .section-inner{max-width:1200px;margin:0 auto;}
 
     .section-title{
-      font-size:clamp(22px, 2.6vw, 40px);
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      font-weight:800;
-      margin-bottom:18px;
+      font-size:clamp(26px, 4vw, 60px);
+      letter-spacing:.22em;
+      text-transform:none;
+      font-weight:900;
+      text-align:center;
+      line-height:1.05;
+      margin-bottom:14px;
+      background:linear-gradient(120deg, var(--text) 0%, var(--gold) 45%, var(--text) 100%);
+      background-size:220% 220%;
+      color:transparent;
+      -webkit-background-clip:text;
+      background-clip:text;
+      animation:headlineGlow 6s ease-in-out infinite;
+    }
+
+    @keyframes headlineGlow{
+      0%{background-position:0% 50%;text-shadow:0 0 12px rgba(201,162,74,.12);} 
+      50%{background-position:100% 50%;text-shadow:0 0 22px rgba(201,162,74,.22);} 
+      100%{background-position:0% 50%;text-shadow:0 0 12px rgba(201,162,74,.12);} 
     }
 
     .section-sub{
-      color:var(--muted);
-      max-width:860px;
-      line-height:1.7;
-      font-size:14px;
-      margin-bottom:44px;
+      display:none;
     }
 
     .services-grid{
@@ -491,10 +501,8 @@
   <!-- SERVICES OVERVIEW (below hero) -->
   <section class="section" id="services">
     <div class="section-inner">
-      <div class="section-title">Choose your lane</div>
-      <div class="section-sub">
-        Three pillars. One signature: clean, premium, and fast. Tap a card to enter the service.
-      </div>
+      <div class="section-title">just choose your lane.</div>
+      <div class="section-sub"></div>
 
       <div class="services-grid">
         <!-- DJ -->
