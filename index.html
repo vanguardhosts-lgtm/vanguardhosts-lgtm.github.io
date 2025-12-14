@@ -428,6 +428,118 @@ background:rgba(0,0,0,.25);
 
 .detail .quick-links a:hover{border-color:rgba(201,162,74,.65);}
 
+/* SIGNATURE FOOTER (home only) */
+.footer{
+  position:relative;
+  overflow:hidden;
+  padding:70px 24px 50px;
+  background:linear-gradient(180deg, rgba(0,0,0,.9) 0%, rgba(10,10,10,.96) 55%, rgba(8,12,20,1) 100%);
+  border-top:1px solid rgba(201,162,74,.24);
+  isolation:isolate;
+}
+
+.footer::before,
+.footer::after{
+  content:"";
+  position:absolute;
+  inset:-30% -10%;
+  background:radial-gradient(circle at 30% 20%, rgba(201,162,74,.09), transparent 35%),
+             radial-gradient(circle at 80% 0%, rgba(96,136,255,.10), transparent 42%),
+             radial-gradient(circle at 52% 100%, rgba(201,162,74,.08), transparent 45%);
+  filter:blur(24px);
+  transform:scale(1.05);
+  z-index:0;
+  animation:auroraFloat 18s ease-in-out infinite alternate;
+}
+
+.footer::after{animation-direction:alternate-reverse;opacity:.75;}
+
+.footer-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;text-align:center;}
+
+.footer-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 22px;
+  border:1px solid rgba(201,162,74,.45);
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  font-weight:800;
+  font-size:11px;
+  position:relative;
+  overflow:hidden;
+  color:var(--text);
+}
+
+.footer-badge::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border:1px solid rgba(201,162,74,.38);
+  mask:linear-gradient(120deg, transparent 0%, transparent 42%, white 50%, transparent 58%, transparent 100%);
+  animation:badgeSweep 5s linear infinite;
+}
+
+.footer-grid{
+  margin-top:32px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:22px;
+  align-items:center;
+}
+
+.footer-card{
+  padding:18px 20px;
+  border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(140deg, rgba(255,255,255,.02) 0%, rgba(255,255,255,.04) 100%);
+  position:relative;
+  overflow:hidden;
+  letter-spacing:.08em;
+  min-height:120px;
+}
+
+.footer-card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(120deg, rgba(201,162,74,.16), rgba(201,162,74,.02));
+  opacity:0;
+  transition:opacity .3s ease;
+  pointer-events:none;
+}
+
+.footer-card:hover::before{opacity:1;}
+
+.footer-heading{font-size:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;margin-bottom:8px;color:var(--text);}
+
+.footer-text{color:var(--muted);font-size:15px;line-height:1.6;}
+
+.footer-link{display:inline-flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:color .2s ease, transform .18s ease;}
+
+.footer-link:hover{color:var(--gold);transform:translateY(-1px);}
+
+.footer-cta{margin-top:20px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--text);opacity:.8;}
+
+.footer-legal{margin-top:22px;color:var(--muted);font-size:13px;letter-spacing:.06em;}
+
+.footer-stars{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:radial-gradient(circle, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 38%);
+  background-size:210px 210px;
+  mix-blend-mode:screen;
+  opacity:.25;
+  animation:stellarDrift 32s linear infinite;
+}
+
+@keyframes badgeSweep{to{transform:translateX(120%);}}
+@keyframes auroraFloat{to{transform:scale(1.1) translateY(-8px);} }
+@keyframes stellarDrift{0%{background-position:0 0;}50%{background-position:120px -80px;}100%{background-position:0 0;}}
+
 /* MOBILE */
 @media (max-width: 900px){
 .services-grid{grid-template-columns:1fr;gap:18px;}
@@ -559,6 +671,34 @@ border:1px solid rgba(255,255,255,.06);
 </div>
 </div>
 </section>
+
+<!-- SIGNATURE FOOTER (home only) -->
+<footer class="footer">
+  <div class="footer-stars" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-badge">Vanguard Hosts · Concierge-Level Presence</div>
+    <div class="footer-grid">
+      <div class="footer-card">
+        <div class="footer-heading">Direct Line</div>
+        <div class="footer-text">
+          <a class="footer-link" href="mailto:vanguard.hosts@gmail.com">Email: vanguard.hosts@gmail.com</a><br />
+          <a class="footer-link" href="tel:+19844645180">Phone: +1 (984) 464-5180</a>
+        </div>
+        <div class="footer-cta">Replies measured in minutes, not days.</div>
+      </div>
+      <div class="footer-card">
+        <div class="footer-heading">Operating Theatre</div>
+        <div class="footer-text">Based in Hudson Valley, NY · Serving NY, NJ, CT, PA, MA &amp; USA-Wide</div>
+        <div class="footer-cta">We travel where the unforgettable is needed.</div>
+      </div>
+      <div class="footer-card">
+        <div class="footer-heading">Fine Print</div>
+        <div class="footer-text">© 2025 Vanguard Hosts · All Rights Reserved</div>
+        <div class="footer-cta">Only the elite remember the closing note.</div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
 // Mobile menu toggle
