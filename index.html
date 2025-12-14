@@ -44,11 +44,12 @@
       align-items:center;
       justify-content:center;
       height:80px; /* alignment anchor */
+      text-decoration:none;
     }
 
     .logo img{
-      height:60px;
-      width:60px;
+      height:64px;
+      width:64px;
       object-fit:contain;
       display:block;
     }
@@ -255,19 +256,29 @@
     .section-inner{max-width:1200px;margin:0 auto;}
 
     .section-title{
-      font-size:clamp(22px, 2.6vw, 40px);
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      font-weight:800;
-      margin-bottom:18px;
+      font-size:clamp(26px, 4vw, 60px);
+      letter-spacing:.22em;
+      text-transform:none;
+      font-weight:900;
+      text-align:center;
+      line-height:1.05;
+      margin-bottom:14px;
+      background:linear-gradient(120deg, var(--text) 0%, var(--gold) 45%, var(--text) 100%);
+      background-size:220% 220%;
+      color:transparent;
+      -webkit-background-clip:text;
+      background-clip:text;
+      animation:headlineGlow 6s ease-in-out infinite;
+    }
+
+    @keyframes headlineGlow{
+      0%{background-position:0% 50%;text-shadow:0 0 12px rgba(201,162,74,.12);} 
+      50%{background-position:100% 50%;text-shadow:0 0 22px rgba(201,162,74,.22);} 
+      100%{background-position:0% 50%;text-shadow:0 0 12px rgba(201,162,74,.12);} 
     }
 
     .section-sub{
-      color:var(--muted);
-      max-width:860px;
-      line-height:1.7;
-      font-size:14px;
-      margin-bottom:44px;
+      display:none;
     }
 
     .services-grid{
@@ -289,6 +300,7 @@
     .service-card.reveal{opacity:1;transform:translateY(0);}
 
     .service-media{
+      display:block;
       position:relative;
       aspect-ratio: 4 / 3;
       overflow:hidden;
@@ -416,11 +428,164 @@
 
     .detail .quick-links a:hover{border-color:rgba(201,162,74,.65);}
 
+    /* SIGNATURE FOOTER */
+    .footer-reveal{height:240px;background:linear-gradient(180deg, transparent, rgba(201,162,74,.08));}
+
+    .signature-footer{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:22px;
+      display:flex;
+      justify-content:center;
+      pointer-events:none;
+      opacity:0;
+      transform:translateY(18px) scale(.99);
+      transition:opacity .45s ease, transform .45s ease;
+      z-index:25;
+    }
+
+    .signature-footer.visible{
+      opacity:1;
+      transform:translateY(0) scale(1);
+    }
+
+    .footer-inner{
+      position:relative;
+      width:min(1140px, calc(100% - 32px));
+      background:radial-gradient(circle at 18% 20%, rgba(201,162,74,.12), transparent 32%),
+        radial-gradient(circle at 82% 12%, rgba(38,110,190,.14), transparent 34%),
+        rgba(6,6,6,.94);
+      border:1px solid rgba(201,162,74,.32);
+      box-shadow:0 25px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      padding:26px 28px 24px;
+      overflow:hidden;
+      pointer-events:auto;
+    }
+
+    .footer-inner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border:1px solid rgba(255,255,255,.04);
+      pointer-events:none;
+    }
+
+    .footer-inner::after{
+      content:"";
+      position:absolute;
+      top:-70%;
+      right:-10%;
+      width:320px;
+      height:320px;
+      background:radial-gradient(circle, rgba(201,162,74,.22), transparent 60%);
+      filter:blur(18px);
+      opacity:.7;
+      pointer-events:none;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.2fr .9fr;
+      gap:20px;
+      align-items:center;
+    }
+
+    .footer-kicker{
+      color:var(--gold);
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      font-size:11px;
+      margin-bottom:10px;
+    }
+
+    .footer-headline{
+      font-size:clamp(24px, 3vw, 34px);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      line-height:1.3;
+      margin-bottom:10px;
+    }
+
+    .footer-subtext{
+      color:var(--muted);
+      line-height:1.7;
+      max-width:640px;
+    }
+
+    .footer-pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:14px 0 10px;
+    }
+
+    .footer-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border:1px solid rgba(201,162,74,.38);
+      color:var(--text);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:11px;
+      background:rgba(0,0,0,.35);
+    }
+
+    .footer-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 20px;
+      border:1px solid rgba(201,162,74,.45);
+      color:var(--text);
+      text-decoration:none;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:800;
+      background:linear-gradient(135deg, rgba(201,162,74,.18), rgba(0,0,0,.6));
+      transition:transform .12s ease, box-shadow .25s ease, border-color .2s ease;
+    }
+
+    .footer-cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 32px rgba(201,162,74,.18);
+      border-color:rgba(201,162,74,.75);
+    }
+
+    .footer-note{
+      color:rgba(242,239,233,.72);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:11px;
+      margin-top:8px;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .footer-note strong{color:var(--text);}
+
+    .footer-sparks{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
     /* MOBILE */
     @media (max-width: 900px){
       .services-grid{grid-template-columns:1fr;gap:18px;}
       .section{padding:96px 16px;}
       .detail{padding:96px 16px;}
+      .footer-grid{grid-template-columns:1fr;}
     }
 
     @media (max-width: 768px){
@@ -438,6 +603,8 @@
 
       .nav-links.open{display:flex;}
       .menu-toggle{display:flex;}
+      .signature-footer{bottom:14px;}
+      .footer-inner{padding:22px 20px;}
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -450,17 +617,17 @@
 <body>
   <div class="page-wrapper" id="top">
     <!-- TOP LEFT LOGO (GOLD) -->
-    <div class="logo" aria-label="Vanguard Hosts">
+    <a class="logo" href="#top" aria-label="Vanguard Hosts home">
       <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo" />
-    </div>
+    </a>
 
     <!-- TOP RIGHT NAV -->
     <header class="nav">
       <div class="nav-links" id="navLinks">
-        <a href="#dj">DJ</a>
-        <a href="#photography">Photography</a>
-        <a href="#marketing">Marketing</a>
-        <a href="#contact">Contact</a>
+        <a href="dj.html">DJ</a>
+        <a href="photography.html">Photography</a>
+        <a href="marketing.html">Marketing</a>
+        <a href="contact.html">Contact</a>
       </div>
       <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="navLinks" aria-expanded="false">
         <div class="menu-icon" aria-hidden="true">
@@ -475,7 +642,7 @@
     <!-- HERO SECTION -->
     <main class="hero">
       <h1 class="title">VANGUARD HOSTS</h1>
-      <button class="cta-btn" type="button">BOOK NOW</button>
+      <a class="cta-btn" href="contact.html">BOOK NOW</a>
 
       <!-- SCROLL DOWN (clickable) -->
       <div class="scroll-down-wrapper">
@@ -490,19 +657,17 @@
   <!-- SERVICES OVERVIEW (below hero) -->
   <section class="section" id="services">
     <div class="section-inner">
-      <div class="section-title">Choose your lane</div>
-      <div class="section-sub">
-        Three pillars. One signature: clean, premium, and fast. Tap a card to enter the service.
-      </div>
+      <div class="section-title">CHOOSE YOUR LANE</div>
+      <div class="section-sub"></div>
 
       <div class="services-grid">
         <!-- DJ -->
         <article class="service-card" data-reveal>
-          <div class="service-media">
-            <img src="dj ai .png" alt="DJ performance" />
-          </div>
+          <a class="service-media" href="dj.html">
+            <img src="assets/dj.png" alt="DJ performance" />
+          </a>
           <div class="service-body">
-            <a class="service-pill" href="#dj">DJ</a>
+            <a class="service-pill" href="dj.html">DJ</a>
             <div class="service-caption">Your night starts here</div>
             <div class="icons" aria-label="DJ social links">
               <a class="icon-link" href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener" aria-label="DJ Instagram">${/* inline svg below */''}</a>
@@ -515,11 +680,11 @@
 
         <!-- PHOTOGRAPHY -->
         <article class="service-card" data-reveal>
-          <div class="service-media">
-            <img src="photography AI.png" alt="Photography" />
-          </div>
+          <a class="service-media" href="photography.html">
+            <img src="assets/photography.png" alt="Photography" />
+          </a>
           <div class="service-body">
-            <a class="service-pill" href="#photography">Photography</a>
+            <a class="service-pill" href="photography.html">Photography</a>
             <div class="service-caption">You live it. We capture it</div>
             <div class="icons" aria-label="Photography social links">
               <a class="icon-link" href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener" aria-label="Photography Instagram"></a>
@@ -532,11 +697,11 @@
 
         <!-- MARKETING -->
         <article class="service-card" data-reveal>
-          <div class="service-media">
-            <img src="Marketing AI.png" alt="Marketing" />
-          </div>
+          <a class="service-media" href="marketing.html">
+            <img src="assets/marketing.png" alt="Marketing" />
+          </a>
           <div class="service-body">
-            <a class="service-pill" href="#marketing">Marketing</a>
+            <a class="service-pill" href="marketing.html">Marketing</a>
             <div class="service-caption">We make you seen</div>
             <div class="icons" aria-label="Marketing social links">
               <a class="icon-link" href="https://www.instagram.com/vanguard.gallery_/" target="_blank" rel="noopener" aria-label="Marketing Instagram"></a>
@@ -550,74 +715,43 @@
     </div>
   </section>
 
-  <!-- DJ PAGE SECTION -->
-  <section class="detail" id="dj">
-    <div class="section-inner">
-      <h2>DJ</h2>
-      <p>
-        Weddings. Birthdays. Corporate. Clubs. Clean transitions, real crowd control, and a premium look.
-      </p>
-      <div class="quick-links">
-        <a href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://www.tiktok.com/@vanguard.events_" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener">YouTube</a>
+  <div class="footer-reveal" id="footerReveal" aria-hidden="true"></div>
+  <footer class="signature-footer" id="signatureFooter" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-kicker">The Vanguard Finish</div>
+          <div class="footer-headline">A $1T-caliber finale for hosts who refuse ordinary.</div>
+          <p class="footer-subtext">Concierge-level DJ control, cinematic photography, and launch-ready marketing so every beat, frame, and impression lands with intention.</p>
+          <div class="footer-pill-row">
+            <span class="footer-pill">DJ Control</span>
+            <span class="footer-pill">Photo Direction</span>
+            <span class="footer-pill">Marketing Firepower</span>
+            <span class="footer-pill">On-Call Crew</span>
+          </div>
+        </div>
+        <div>
+          <p class="footer-subtext">We obsess over the last 5%: the lighting, the pacing, the story you keep telling after the night ends. When you hit the bottom of the page, we’re ready to lock in.</p>
+          <div class="footer-pill-row">
+            <span class="footer-pill">Weddings</span>
+            <span class="footer-pill">Corporate</span>
+            <span class="footer-pill">Nightlife</span>
+            <span class="footer-pill">Destinations</span>
+          </div>
+          <a class="footer-cta" href="contact.html">Summon Vanguard</a>
+        </div>
+      </div>
+      <div class="footer-note">
+        <span><strong>Vanguard Hosts</strong> — precision hospitality and visuals engineered to feel inevitable.</span>
+        <div class="footer-sparks">
+          <span>Concierge responses within 1 hour</span>
+          <span>Built for clients who expect headlines</span>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- PHOTOGRAPHY PAGE SECTION -->
-  <section class="detail" id="photography">
-    <div class="section-inner">
-      <h2>Photography</h2>
-      <p>
-        Crisp, cinematic coverage. Events, portraits, products, and content built for social.
-      </p>
-      <div class="quick-links">
-        <a href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://www.tiktok.com/@vanguard.events_" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener">YouTube</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MARKETING PAGE SECTION -->
-  <section class="detail" id="marketing">
-    <div class="section-inner">
-      <h2>Marketing</h2>
-      <p>
-        Short, sharp promos that sell: businesses, cars, properties, and personal brands.
-      </p>
-      <div class="quick-links">
-        <a href="https://www.instagram.com/vanguard.gallery_/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://www.tiktok.com/@vanguard.gallery__" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener">YouTube</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="detail" id="contact">
-    <div class="section-inner">
-      <h2>Contact</h2>
-      <p>
-        Drop your date, location, and what you need (DJ / Photo / Marketing). We’ll reply fast.
-      </p>
-      <div class="quick-links">
-        <a href="#top">Back to top</a>
-      </div>
-    </div>
-  </section>
+  </footer>
 
   <script>
-    // Prevent the browser from restoring scroll position on refresh
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-    window.scrollTo(0, 0);
-
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
@@ -688,6 +822,22 @@
     document.querySelectorAll('.icon-link').forEach(a => {
       a.innerHTML = iconForHref(a.getAttribute('href'));
     });
+
+    // Reveal the signature footer only when the end is in view
+    const signatureFooter = document.getElementById('signatureFooter');
+    const footerReveal = document.getElementById('footerReveal');
+
+    if (signatureFooter && footerReveal && 'IntersectionObserver' in window) {
+      const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          signatureFooter.classList.toggle('visible', entry.isIntersecting);
+        });
+      }, { threshold: 0.45 });
+
+      footerObserver.observe(footerReveal);
+    } else if (signatureFooter) {
+      signatureFooter.classList.add('visible');
+    }
   </script>
 </body>
 </html>
