@@ -431,44 +431,39 @@ background:rgba(0,0,0,.25);
 /* SIGNATURE FOOTER */
 .footer-reveal{height:240px;background:linear-gradient(180deg, transparent, rgba(201,162,74,.08));}
 
-    .signature-footer{
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:22px;
-      display:flex;
-      justify-content:center;
-      pointer-events:none;
-      opacity:0;
-      transform:translateY(18px) scale(.99);
-      transition:opacity .45s ease, transform .45s ease;
-      z-index:18;
-    }
+.signature-footer{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:22px;
+  display:flex;
+  justify-content:center;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(18px) scale(.99);
+  transition:opacity .45s ease, transform .45s ease;
+  z-index:25;
+}
 
-    .signature-footer.visible{
-      opacity:1;
-      transform:translateY(0) scale(1);
-      pointer-events:auto;
-    }
+.signature-footer.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
 
-    .footer-inner{
-      position:relative;
-      width:min(1140px, calc(100% - 32px));
-      background:radial-gradient(circle at 18% 20%, rgba(201,162,74,.12), transparent 32%),
-        radial-gradient(circle at 82% 12%, rgba(38,110,190,.14), transparent 34%),
-        rgba(6,6,6,.94);
-      border:1px solid rgba(201,162,74,.32);
-      box-shadow:0 25px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-      padding:26px 28px 24px;
-      overflow:hidden;
-      pointer-events:none;
-    }
-
-    .signature-footer.visible .footer-inner{
-      pointer-events:auto;
-    }
+.footer-inner{
+  position:relative;
+  width:min(1140px, calc(100% - 32px));
+  background:radial-gradient(circle at 18% 20%, rgba(201,162,74,.12), transparent 32%),
+    radial-gradient(circle at 82% 12%, rgba(38,110,190,.14), transparent 34%),
+    rgba(6,6,6,.94);
+  border:1px solid rgba(201,162,74,.32);
+  box-shadow:0 25px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  padding:26px 28px 24px;
+  overflow:hidden;
+  pointer-events:auto;
+}
 
 .footer-inner::before{
   content:"";
