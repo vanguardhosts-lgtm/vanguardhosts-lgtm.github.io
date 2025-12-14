@@ -437,27 +437,19 @@ background:rgba(0,0,0,.25);
   border-top:1px solid rgba(201,162,74,.35);
 }
 
-.vh-footer__inner{
-  max-width:1200px;
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  align-items:center;
-  text-align:center;
-}
+.vh-footer__inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:16px;}
 
 .vh-footer__kicker{letter-spacing:.2em;font-size:10px;font-weight:800;color:var(--gold);}
 
 .vh-footer__headline{font-size:clamp(22px,3vw,38px);font-weight:800;line-height:1.05;letter-spacing:.08em;text-transform:uppercase;max-width:760px;}
 
-.vh-footer__content{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.vh-footer__content{display:grid;grid-template-columns:1fr;gap:18px;align-items:start;}
 
-.vh-footer__text{color:var(--muted);line-height:1.5;font-size:14px;max-width:620px;}
+.vh-footer__text{color:var(--muted);line-height:1.5;font-size:14px;max-width:640px;}
 
-.vh-footer__actions{display:flex;flex-direction:column;gap:8px;align-items:center;}
+.vh-footer__actions{display:flex;flex-direction:column;gap:8px;}
 
-.vh-footer__row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.vh-footer__row{display:flex;flex-wrap:wrap;gap:8px;}
 
 .vh-footer__pill{padding:10px 16px;border:1px solid rgba(201,162,74,.45);color:var(--text);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;font-weight:800;background:rgba(0,0,0,.35);transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;}
 
@@ -467,9 +459,7 @@ background:rgba(0,0,0,.25);
 
 .vh-footer__cta:hover{border-color:rgba(201,162,74,.9);box-shadow:0 0 24px rgba(201,162,74,.18);transform:translateY(-1px);}
 
-.vh-footer__fineprint{color:rgba(242,239,233,.72);font-size:12px;line-height:1.5;display:flex;flex-direction:column;gap:6px;align-items:center;letter-spacing:.06em;}
-
-.vh-footer__fineprint-line{text-align:center;}
+.vh-footer__fineprint{color:rgba(242,239,233,.65);font-size:12px;line-height:1.4;}
 
 @media (max-width: 900px){
   .vh-footer{padding:28px 16px 34px;}
@@ -629,8 +619,8 @@ border:1px solid rgba(255,255,255,.06);
       </div>
     </div>
     <div class="vh-footer__fineprint">
-      <div class="vh-footer__fineprint-line">Based in Hudson Valley, NY · Serving NY, NJ, CT, PA, MA &amp; USA-Wide</div>
-      <div class="vh-footer__fineprint-line">© 2025 Vanguard Hosts · All Rights Reserved</div>
+      Based in Hudson Valley, NY · Serving NY, NJ, CT, PA, MA & USA-Wide
+      © 2025 Vanguard Hosts · All Rights Reserved
     </div>
   </div>
 </footer>
