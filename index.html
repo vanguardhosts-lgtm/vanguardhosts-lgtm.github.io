@@ -13,6 +13,7 @@
 --gold:#c9a24a;
 --goldSoft:rgba(201,162,74,.35);
 --blueNuance:#0a0f1b;
+--footerGradient:linear-gradient(90deg, #050509 0%, #0d0d12 30%, #11151f 55%, #1e222d 70%, #2d2f39 80%, #3d362b 90%, #483a23 100%);
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -428,6 +429,42 @@ background:rgba(0,0,0,.25);
 
 .detail .quick-links a:hover{border-color:rgba(201,162,74,.65);}
 
+.vh-footer{
+  background:var(--footerGradient);
+  color:var(--text);
+  padding:72px 24px 80px;
+  border-top:1px solid rgba(201,162,74,.35);
+}
+
+.vh-footer__inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:26px;}
+
+.vh-footer__kicker{letter-spacing:.2em;font-size:11px;font-weight:800;color:var(--gold);}
+
+.vh-footer__headline{font-size:clamp(28px,4vw,56px);font-weight:800;line-height:1.1;letter-spacing:.08em;text-transform:uppercase;max-width:900px;}
+
+.vh-footer__content{display:grid;grid-template-columns:1.2fr .9fr;gap:32px;align-items:start;}
+
+.vh-footer__text{color:var(--muted);line-height:1.8;font-size:16px;max-width:720px;}
+
+.vh-footer__actions{display:flex;flex-direction:column;gap:12px;}
+
+.vh-footer__row{display:flex;flex-wrap:wrap;gap:10px;}
+
+.vh-footer__pill{padding:12px 20px;border:1px solid rgba(201,162,74,.45);color:var(--text);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;font-weight:800;background:rgba(0,0,0,.35);transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;}
+
+.vh-footer__pill:hover{border-color:rgba(201,162,74,.85);box-shadow:0 0 20px rgba(201,162,74,.15);transform:translateY(-1px);}
+
+.vh-footer__cta{padding:18px 28px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:var(--text);font-weight:800;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;text-align:center;transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;}
+
+.vh-footer__cta:hover{border-color:rgba(201,162,74,.9);box-shadow:0 0 24px rgba(201,162,74,.18);transform:translateY(-1px);}
+
+.vh-footer__fineprint{color:rgba(242,239,233,.65);font-size:13px;line-height:1.6;}
+
+@media (max-width: 900px){
+  .vh-footer{padding:64px 18px 70px;}
+  .vh-footer__content{grid-template-columns:1fr;}
+}
+
 /* MOBILE */
 @media (max-width: 900px){
 .services-grid{grid-template-columns:1fr;gap:18px;}
@@ -559,6 +596,38 @@ border:1px solid rgba(255,255,255,.06);
 </div>
 </div>
 </section>
+
+<footer class="vh-footer">
+  <div class="vh-footer__inner">
+    <div class="vh-footer__kicker">THE VANGUARD FINISH</div>
+    <h2 class="vh-footer__headline">A SIT-CALIBER FINALE FOR HOSTS WHO REFUSE ORDINARY.</h2>
+    <div class="vh-footer__content">
+      <p class="vh-footer__text">
+        We obsess over the last 5%: the lighting, the pacing, the story you keep telling after the night ends. When you hit the bottom of the page, we are ready to lock in.
+      </p>
+      <div class="vh-footer__actions">
+        <div class="vh-footer__row">
+          <a class="vh-footer__pill" href="dj.html">DJ Curation</a>
+          <a class="vh-footer__pill" href="photography.html">Photo Direction</a>
+        </div>
+        <div class="vh-footer__row">
+          <a class="vh-footer__pill" href="marketing.html">Marketing Strategy</a>
+          <a class="vh-footer__pill" href="contact.html">On-Call Crew</a>
+        </div>
+        <div class="vh-footer__row">
+          <a class="vh-footer__pill" href="marketing.html">Regions</a>
+          <a class="vh-footer__pill" href="marketing.html">Corporate</a>
+          <a class="vh-footer__pill" href="dj.html">Nightlife</a>
+          <a class="vh-footer__pill" href="photography.html">Destinations</a>
+        </div>
+        <a class="vh-footer__cta" href="contact.html">Summon Vanguard</a>
+      </div>
+    </div>
+    <div class="vh-footer__fineprint">
+      VANGUARD HOSTS · PRECISION HOSPITALITY &amp; VISUALS DESIGNED TO TRAVEL · CONCIERGE RESPONSE WITHIN 24 HOURS · READY FOR CLIENT DEADLINES
+    </div>
+  </div>
+</footer>
 
 <script>
 // Mobile menu toggle
