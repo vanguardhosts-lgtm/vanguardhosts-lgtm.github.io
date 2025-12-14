@@ -416,9 +416,9 @@ max-width:860px;
 .detail .quick-links{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;}
 
 .detail .quick-links a{
-padding:10px 14px;
-border:1px solid rgba(201,162,74,.28);
-color:var(--text);
+  padding:10px 14px;
+  border:1px solid rgba(201,162,74,.28);
+  color:var(--text);
 text-decoration:none;
 letter-spacing:.12em;
 text-transform:uppercase;
@@ -428,16 +428,167 @@ background:rgba(0,0,0,.25);
 
 .detail .quick-links a:hover{border-color:rgba(201,162,74,.65);}
 
+/* SIGNATURE FOOTER */
+.footer-reveal{height:240px;background:linear-gradient(180deg, transparent, rgba(201,162,74,.08));}
+
+    .signature-footer{
+      position:sticky;
+      left:0;
+      right:0;
+      bottom:18px;
+      display:flex;
+      justify-content:center;
+      opacity:0;
+      transform:translateY(18px) scale(.99);
+      transition:opacity .45s ease, transform .45s ease;
+      z-index:4;
+    }
+
+    .signature-footer.visible{
+      opacity:1;
+      transform:translateY(0) scale(1);
+    }
+
+    .footer-inner{
+      position:relative;
+      width:min(1140px, calc(100% - 32px));
+      background:radial-gradient(circle at 18% 20%, rgba(201,162,74,.12), transparent 32%),
+        radial-gradient(circle at 82% 12%, rgba(38,110,190,.14), transparent 34%),
+        rgba(6,6,6,.94);
+      border:1px solid rgba(201,162,74,.32);
+      box-shadow:0 25px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      padding:26px 28px 24px;
+      overflow:hidden;
+    }
+
+.footer-inner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(255,255,255,.04);
+  pointer-events:none;
+}
+
+.footer-inner::after{
+  content:"";
+  position:absolute;
+  top:-70%;
+  right:-10%;
+  width:320px;
+  height:320px;
+  background:radial-gradient(circle, rgba(201,162,74,.22), transparent 60%);
+  filter:blur(18px);
+  opacity:.7;
+  pointer-events:none;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.2fr .9fr;
+  gap:20px;
+  align-items:center;
+}
+
+.footer-kicker{
+  color:var(--gold);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:11px;
+  margin-bottom:10px;
+}
+
+.footer-headline{
+  font-size:clamp(24px, 3vw, 34px);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  line-height:1.3;
+  margin-bottom:10px;
+}
+
+.footer-subtext{
+  color:var(--muted);
+  line-height:1.7;
+  max-width:640px;
+}
+
+.footer-pill-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:14px 0 10px;
+}
+
+.footer-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid rgba(201,162,74,.38);
+  color:var(--text);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:11px;
+  background:rgba(0,0,0,.35);
+}
+
+.footer-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 20px;
+  border:1px solid rgba(201,162,74,.45);
+  color:var(--text);
+  text-decoration:none;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:800;
+  background:linear-gradient(135deg, rgba(201,162,74,.18), rgba(0,0,0,.6));
+  transition:transform .12s ease, box-shadow .25s ease, border-color .2s ease;
+}
+
+.footer-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 32px rgba(201,162,74,.18);
+  border-color:rgba(201,162,74,.75);
+}
+
+.footer-note{
+  color:rgba(242,239,233,.72);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:11px;
+  margin-top:8px;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.footer-note strong{color:var(--text);}
+
+.footer-sparks{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
 /* MOBILE */
 @media (max-width: 900px){
-.services-grid{grid-template-columns:1fr;gap:18px;}
-.section{padding:96px 16px;}
-.detail{padding:96px 16px;}
+  .services-grid{grid-template-columns:1fr;gap:18px;}
+  .section{padding:96px 16px;}
+  .detail{padding:96px 16px;}
+  .footer-grid{grid-template-columns:1fr;}
 }
 
 @media (max-width: 768px){
-.nav-links{
-display:none;
+  .nav-links{
+    display:none;
 position:fixed;
 top:86px;
 right:24px;
@@ -448,8 +599,10 @@ gap:16px;
 border:1px solid rgba(255,255,255,.06);
 }
 
-.nav-links.open{display:flex;}
-.menu-toggle{display:flex;}
+  .nav-links.open{display:flex;}
+  .menu-toggle{display:flex;}
+  .signature-footer{bottom:14px;}
+  .footer-inner{padding:22px 20px;}
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -560,6 +713,42 @@ border:1px solid rgba(255,255,255,.06);
 </div>
 </section>
 
+<div class="footer-reveal" id="footerReveal" aria-hidden="true"></div>
+<footer class="signature-footer" id="signatureFooter" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-kicker">The Vanguard Finish</div>
+        <div class="footer-headline">A $1T-caliber finale for hosts who refuse ordinary.</div>
+        <p class="footer-subtext">Concierge-level DJ control, cinematic photography, and launch-ready marketing so every beat, frame, and impression lands with intention.</p>
+        <div class="footer-pill-row">
+          <span class="footer-pill">DJ Control</span>
+          <span class="footer-pill">Photo Direction</span>
+          <span class="footer-pill">Marketing Firepower</span>
+          <span class="footer-pill">On-Call Crew</span>
+        </div>
+      </div>
+      <div>
+        <p class="footer-subtext">We obsess over the last 5%: the lighting, the pacing, the story you keep telling after the night ends. When you hit the bottom of the page, we’re ready to lock in.</p>
+        <div class="footer-pill-row">
+          <span class="footer-pill">Weddings</span>
+          <span class="footer-pill">Corporate</span>
+          <span class="footer-pill">Nightlife</span>
+          <span class="footer-pill">Destinations</span>
+        </div>
+        <a class="footer-cta" href="contact.html">Summon Vanguard</a>
+      </div>
+    </div>
+    <div class="footer-note">
+      <span><strong>Vanguard Hosts</strong> — precision hospitality and visuals engineered to feel inevitable.</span>
+      <div class="footer-sparks">
+        <span>Concierge responses within 1 hour</span>
+        <span>Built for clients who expect headlines</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script>
 // Mobile menu toggle
 const menuToggle = document.getElementById('menuToggle');
@@ -638,6 +827,22 @@ return '';
 document.querySelectorAll('.icon-link').forEach(a => {
 a.innerHTML = iconForHref(a.getAttribute('href'));
 });
+
+// Reveal the signature footer only when the end is in view
+const signatureFooter = document.getElementById('signatureFooter');
+const footerReveal = document.getElementById('footerReveal');
+
+if (signatureFooter && footerReveal && 'IntersectionObserver' in window) {
+const footerObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+signatureFooter.classList.toggle('visible', entry.isIntersecting);
+});
+}, { threshold: 0.45 });
+
+footerObserver.observe(footerReveal);
+} else if (signatureFooter) {
+signatureFooter.classList.add('visible');
+}
 </script>
 </body>
 </html>
