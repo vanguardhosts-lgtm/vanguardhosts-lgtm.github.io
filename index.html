@@ -440,15 +440,16 @@ border-top:1px solid rgba(201,162,74,.35);
 
 .vh-footer__inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:20px;}
 
-.vh-footer__header{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.vh-footer__header{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
 
 .vh-footer__logo{height:48px;width:auto;object-fit:contain;}
 
 .vh-footer__title{flex:1;text-align:center;letter-spacing:.18em;font-size:clamp(18px,2.8vw,26px);font-weight:800;text-transform:uppercase;}
 
-.vh-footer__toplink{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,74,.45);background:rgba(0,0,0,.25);color:var(--text);text-decoration:none;font-size:14px;transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;}
 
-.vh-footer__toplink:hover{border-color:rgba(201,162,74,.85);box-shadow:0 0 18px rgba(201,162,74,.15);transform:translateY(-1px);}
+.vh-footer__button{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border:1px solid rgba(201,162,74,.45);background:rgba(0,0,0,.25);color:var(--text);text-decoration:none;letter-spacing:.12em;font-size:12px;font-weight:800;text-transform:uppercase;transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;}
+
+.vh-footer__button:hover{border-color:rgba(201,162,74,.85);box-shadow:0 0 18px rgba(201,162,74,.15);transform:translateY(-1px);}
 
 .vh-footer__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border-top:1px solid rgba(242,239,233,.12);border-bottom:1px solid rgba(242,239,233,.12);padding:18px 0;}
 
@@ -466,8 +467,8 @@ border-top:1px solid rgba(201,162,74,.35);
 
 @media (max-width: 900px){
 .vh-footer{padding:28px 16px 34px;}
-.vh-footer__header{flex-direction:column;align-items:flex-start;gap:10px;}
-.vh-footer__title{text-align:left;width:100%;}
+.vh-footer__header{align-items:center;gap:10px;}
+.vh-footer__title{text-align:center;width:100%;}
 .vh-footer__grid{grid-template-columns:1fr;border-left:none;border-right:none;}
 .vh-footer__block{border-left:none;border-top:1px solid rgba(242,239,233,.12);padding-top:12px;}
 .vh-footer__block:first-child{border-top:none;padding-top:0;}
@@ -609,25 +610,24 @@ border:1px solid rgba(255,255,255,.06);
 <div class="vh-footer__inner">
 <div class="vh-footer__header">
 <img class="vh-footer__logo" src="three-pillars-logo.png" alt="Vanguard Hosts logo" />
-<h2 class="vh-footer__title">Partners</h2>
-<a class="vh-footer__toplink" href="#top" aria-label="Back to top">&#8593;</a>
+<h2 class="vh-footer__title">Ready to Book</h2>
 </div>
 <div class="vh-footer__grid">
 <div class="vh-footer__block">
-<div class="vh-footer__label">Management</div>
-<a class="vh-footer__email" href="mailto:post@kreatell.com">post@kreatell.com</a>
+<div class="vh-footer__label">Call/Text</div>
+<a class="vh-footer__email" href="tel:+18454645180">+1 (845) 464-5180</a>
 </div>
 <div class="vh-footer__block">
-<div class="vh-footer__label">Booking</div>
-<a class="vh-footer__email" href="mailto:booking@alanwalker.com">booking@alanwalker.com</a>
+<div class="vh-footer__label">Email</div>
+<a class="vh-footer__email" href="mailto:vanguard.hosts@gmail.com">vanguard.hosts@gmail.com</a>
 </div>
 <div class="vh-footer__block">
-<div class="vh-footer__label">Demo</div>
-<a class="vh-footer__email" href="mailto:demo@kreatell.com">demo@kreatell.com</a>
+<a class="vh-footer__button" href="contact.html">Book Online</a>
 </div>
 </div>
 <div class="vh-footer__fineprint">
-<div>© 2025 Alan Walker . All Rights Reserved | Terms &amp; Conditions</div>
+<div>Based in Hudson Valley, NY · Serving NY, NJ, CT, PA, MA &amp; USA-Wide</div>
+<div>© 2025 Vanguard Hosts · All Rights Reserved</div>
 </div>
 </div>
 </footer>
