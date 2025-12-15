@@ -444,14 +444,11 @@ background:rgba(0,0,0,.25);
 
 .vh-footer__logo{height:48px;width:auto;object-fit:contain;}
 
-.vh-footer__title{flex:1;text-align:center;letter-spacing:.18em;font-size:clamp(18px,2.8vw,26px);font-weight:800;text-transform:uppercase;animation:footerPulse 6s ease-in-out infinite;}
+.vh-footer__title{flex:1;text-align:center;letter-spacing:.18em;font-size:clamp(18px,2.8vw,26px);font-weight:800;text-transform:uppercase;}
 
-.vh-footer__spacer{width:34px;height:34px;}
+.vh-footer__toplink{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(201,162,74,.45);background:rgba(0,0,0,.25);color:var(--text);text-decoration:none;font-size:14px;transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;}
 
-@keyframes footerPulse{
-0%,100%{letter-spacing:.18em;text-shadow:0 0 0 rgba(201,162,74,0);}
-50%{letter-spacing:.22em;text-shadow:0 0 18px rgba(201,162,74,.16);}
-}
+.vh-footer__toplink:hover{border-color:rgba(201,162,74,.85);box-shadow:0 0 18px rgba(201,162,74,.15);transform:translateY(-1px);}
 
 .vh-footer__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border-top:1px solid rgba(242,239,233,.12);border-bottom:1px solid rgba(242,239,233,.12);padding:18px 0;}
 
@@ -612,8 +609,8 @@ border:1px solid rgba(255,255,255,.06);
   <div class="vh-footer__inner">
     <div class="vh-footer__header">
       <img class="vh-footer__logo" src="three-pillars-logo.png" alt="Vanguard Hosts logo" />
-      <h2 class="vh-footer__title">REARDY TO BOOK?</h2>
-      <div class="vh-footer__spacer" aria-hidden="true"></div>
+      <h2 class="vh-footer__title">Partners</h2>
+      <a class="vh-footer__toplink" href="#top" aria-label="Back to top">&#8593;</a>
     </div>
     <div class="vh-footer__grid">
       <div class="vh-footer__block">
