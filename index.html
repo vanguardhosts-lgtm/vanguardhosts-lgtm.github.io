@@ -430,40 +430,50 @@ background:rgba(0,0,0,.25);
 .detail .quick-links a:hover{border-color:rgba(201,162,74,.65);}
 
 
+
 .vh-footer{
-background:var(--footerGradient);
-color:var(--text);
-padding:32px 18px 36px;
-border-top:1px solid rgba(201,162,74,.35);
+  background:var(--footerGradient);
+  color:var(--text);
+  padding:32px 18px 36px;
+  border-top:1px solid rgba(201,162,74,.35);
 }
 
-.vh-footer__inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:16px;}
+.vh-footer__inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:20px;}
 
-.vh-footer__kicker{letter-spacing:.2em;font-size:10px;font-weight:800;color:var(--gold);}
+.vh-footer__header{display:flex;align-items:center;justify-content:space-between;gap:12px;}
 
-.vh-footer__headline{font-size:clamp(22px,3vw,38px);font-weight:800;line-height:1.05;letter-spacing:.08em;text-transform:uppercase;max-width:760px;}
+.vh-footer__logo{height:48px;width:auto;object-fit:contain;}
 
-.vh-footer__content{display:grid;grid-template-columns:1fr;gap:18px;align-items:start;}
+.vh-footer__title{flex:1;text-align:center;letter-spacing:.18em;font-size:clamp(18px,2.8vw,26px);font-weight:800;text-transform:uppercase;animation:footerPulse 6s ease-in-out infinite;}
 
-.vh-footer__text{color:var(--muted);line-height:1.5;font-size:14px;max-width:640px;}
+.vh-footer__spacer{width:34px;height:34px;}
 
-.vh-footer__actions{display:flex;flex-direction:column;gap:8px;}
+@keyframes footerPulse{
+0%,100%{letter-spacing:.18em;text-shadow:0 0 0 rgba(201,162,74,0);}
+50%{letter-spacing:.22em;text-shadow:0 0 18px rgba(201,162,74,.16);}
+}
 
-.vh-footer__row{display:flex;flex-wrap:wrap;gap:8px;}
+.vh-footer__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border-top:1px solid rgba(242,239,233,.12);border-bottom:1px solid rgba(242,239,233,.12);padding:18px 0;}
 
-.vh-footer__pill{padding:10px 16px;border:1px solid rgba(201,162,74,.45);color:var(--text);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;font-weight:800;background:rgba(0,0,0,.35);transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;}
+.vh-footer__block{display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center;border-left:1px solid rgba(242,239,233,.12);}
 
-.vh-footer__pill:hover{border-color:rgba(201,162,74,.85);box-shadow:0 0 20px rgba(201,162,74,.15);transform:translateY(-1px);}
+.vh-footer__block:first-child{border-left:none;}
 
-.vh-footer__cta{padding:12px 20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:var(--text);font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;text-align:center;transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;}
+.vh-footer__label{letter-spacing:.16em;font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;}
 
-.vh-footer__cta:hover{border-color:rgba(201,162,74,.9);box-shadow:0 0 24px rgba(201,162,74,.18);transform:translateY(-1px);}
+.vh-footer__email{color:var(--text);text-decoration:none;font-size:14px;font-weight:600;}
 
-.vh-footer__fineprint{color:rgba(242,239,233,.65);font-size:12px;line-height:1.5;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;}
+.vh-footer__email:hover{text-decoration:underline;}
+
+.vh-footer__fineprint{color:rgba(242,239,233,.65);font-size:11px;line-height:1.5;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;letter-spacing:.08em;text-transform:uppercase;}
 
 @media (max-width: 900px){
 .vh-footer{padding:28px 16px 34px;}
-.vh-footer__content{grid-template-columns:1fr;}
+.vh-footer__header{flex-direction:column;align-items:flex-start;gap:10px;}
+.vh-footer__title{text-align:left;width:100%;}
+.vh-footer__grid{grid-template-columns:1fr;border-left:none;border-right:none;}
+.vh-footer__block{border-left:none;border-top:1px solid rgba(242,239,233,.12);padding-top:12px;}
+.vh-footer__block:first-child{border-top:none;padding-top:0;}
 }
 
 /* MOBILE */
@@ -599,30 +609,30 @@ border:1px solid rgba(255,255,255,.06);
 </section>
 
 <footer class="vh-footer">
-<div class="vh-footer__inner">
-<div class="vh-footer__kicker">THE VANGUARD FINISH</div>
-<h2 class="vh-footer__headline">A TIGHT, FOCUSED FINISH FOR HOSTS WHO REFUSE ORDINARY.</h2>
-<div class="vh-footer__content">
-<p class="vh-footer__text">
-We obsess over the last 5%: the lighting, the pacing, the story you keep telling after the night ends.
-</p>
-<div class="vh-footer__actions">
-<div class="vh-footer__row">
-<a class="vh-footer__pill" href="dj.html">DJ Curation</a>
-<a class="vh-footer__pill" href="photography.html">Photo Direction</a>
-</div>
-<div class="vh-footer__row">
-<a class="vh-footer__pill" href="marketing.html">Marketing Strategy</a>
-<a class="vh-footer__pill" href="contact.html">On-Call Crew</a>
-</div>
-<a class="vh-footer__cta" href="contact.html">Summon Vanguard</a>
-</div>
-</div>
-<div class="vh-footer__fineprint">
-<div>Based in Hudson Valley, NY · Serving NY, NJ, CT, PA, MA &amp; USA-Wide</div>
-<div>© 2025 Vanguard Hosts · All Rights Reserved</div>
-</div>
-</div>
+  <div class="vh-footer__inner">
+    <div class="vh-footer__header">
+      <img class="vh-footer__logo" src="three-pillars-logo.png" alt="Vanguard Hosts logo" />
+      <h2 class="vh-footer__title">REARDY TO BOOK?</h2>
+      <div class="vh-footer__spacer" aria-hidden="true"></div>
+    </div>
+    <div class="vh-footer__grid">
+      <div class="vh-footer__block">
+        <div class="vh-footer__label">Management</div>
+        <a class="vh-footer__email" href="mailto:post@kreatell.com">post@kreatell.com</a>
+      </div>
+      <div class="vh-footer__block">
+        <div class="vh-footer__label">Booking</div>
+        <a class="vh-footer__email" href="mailto:booking@alanwalker.com">booking@alanwalker.com</a>
+      </div>
+      <div class="vh-footer__block">
+        <div class="vh-footer__label">Demo</div>
+        <a class="vh-footer__email" href="mailto:demo@kreatell.com">demo@kreatell.com</a>
+      </div>
+    </div>
+    <div class="vh-footer__fineprint">
+      <div>© 2025 Alan Walker . All Rights Reserved | Terms &amp; Conditions</div>
+    </div>
+  </div>
 </footer>
 
 <script>
