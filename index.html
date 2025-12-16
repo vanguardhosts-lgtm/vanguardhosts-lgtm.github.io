@@ -299,6 +299,19 @@ opacity:0;
 transition:opacity .8s ease, transform .8s ease;
 }
 
+.service-card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(110deg, transparent 0%, rgba(201,162,74,.05) 38%, rgba(201,162,74,.38) 50%, rgba(201,162,74,.05) 62%, transparent 82%);
+transform:translateX(-140%);
+animation:serviceFlash 4.5s ease-in-out infinite;
+pointer-events:none;
+mix-blend-mode:screen;
+}
+
+@keyframes serviceFlash{0%{transform:translateX(-140%);}100%{transform:translateX(140%);}}
+
 .service-card.reveal{opacity:1;transform:translateY(0);}
 
 .service-media{
@@ -509,6 +522,7 @@ border:1px solid rgba(255,255,255,.06);
 *{scroll-behavior:auto;}
 .scroll-arrow{animation:none;}
 .service-card{transition:none;}
+.service-card::before{animation:none;}
 }
 </style>
 </head>
