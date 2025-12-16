@@ -290,38 +290,88 @@ gap:22px;
 }
 
 .service-card{
-border:1px solid rgba(255,255,255,.08);
-background:rgba(10,10,10,.55);
-overflow:hidden;
-position:relative;
-transform:translateY(14px);
-opacity:0;
-transition:opacity .8s ease, transform .8s ease;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(10,10,10,.55);
+  overflow:hidden;
+  position:relative;
+  isolation:isolate;
+  --tiltX:0deg;
+  --tiltY:0deg;
+  --lift:14px;
+  transform:translateY(var(--lift)) rotateX(var(--tiltY)) rotateY(var(--tiltX));
+  opacity:0;
+  transition:opacity .8s ease, transform .8s ease, filter .5s ease;
+  perspective:1200px;
 }
 
-.service-card.reveal{opacity:1;transform:translateY(0);}
+.service-card::before,
+.service-card::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  z-index:0;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .4s ease;
+}
+
+.service-card::before{
+  background:conic-gradient(from 90deg at 50% 50%, transparent 0deg, rgba(201,162,74,.28) 120deg, rgba(255,255,255,.16) 200deg, transparent 360deg);
+  filter:blur(28px) saturate(1.2);
+  mix-blend-mode:screen;
+  animation:orbitalLux 9s linear infinite;
+}
+
+.service-card::after{
+  background:radial-gradient(120% 140% at 50% -20%, rgba(201,162,74,.16) 0%, rgba(201,162,74,0) 60%);
+  mix-blend-mode:soft-light;
+}
+
+.service-card.reveal{opacity:1;--lift:0px;}
+
+.service-card:hover{filter:drop-shadow(0 20px 38px rgba(201,162,74,.12));}
+
+.service-card:hover::before{opacity:1;}
+
+.service-card:hover::after{opacity:.9;}
 
 .service-media{
-display:block;
-position:relative;
-aspect-ratio: 4 / 3;
-overflow:hidden;
-background:#000;
+  display:block;
+  position:relative;
+  aspect-ratio: 4 / 3;
+  overflow:hidden;
+  background:#000;
 }
 
 .service-media img{
-width:100%;
-height:100%;
-object-fit:cover;
-filter:saturate(1.02) contrast(1.02);
-transform:scale(1.03);
-transition:transform .55s ease, filter .55s ease;
-display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(1.02) contrast(1.02);
+  transform:scale(1.03);
+  transition:transform .55s ease, filter .55s ease;
+  display:block;
+}
+
+.service-media::before{
+  content:"";
+  position:absolute;
+  inset:-40% 10% 10% 10%;
+  background:linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.24) 35%, rgba(201,162,74,.14) 50%, rgba(255,255,255,0) 65%);
+  opacity:0;
+  transform:translateY(-40%) rotate(-2deg);
+  transition:opacity .45s ease, transform .45s ease;
+  mix-blend-mode:screen;
 }
 
 .service-card:hover .service-media img{
-transform:scale(1.08);
-filter:saturate(1.08) contrast(1.06);
+  transform:scale(1.08);
+  filter:saturate(1.08) contrast(1.06);
+}
+
+.service-card:hover .service-media::before{
+  opacity:1;
+  transform:translateY(18%) rotate(3deg);
 }
 
 .service-media::after{
@@ -351,9 +401,9 @@ transition:border-color .2s ease, box-shadow .25s ease, transform .12s ease;
 }
 
 .service-pill:hover{
-border-color:rgba(201,162,74,.65);
-box-shadow:0 0 22px rgba(201,162,74,.10);
-transform:translateY(-1px);
+  border-color:rgba(201,162,74,.65);
+  box-shadow:0 0 22px rgba(201,162,74,.10);
+  transform:translateY(-1px);
 }
 
 .service-caption{
@@ -393,6 +443,11 @@ box-shadow:0 0 18px rgba(201,162,74,.10);
 }
 
 .icon-link svg{width:18px;height:18px;display:block;}
+
+@keyframes orbitalLux{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
 
 /* DETAIL SECTIONS */
 .detail{
@@ -691,6 +746,23 @@ io.unobserve(entry.target);
 }, { threshold: 0.18 });
 
 revealEls.forEach(el => io.observe(el));
+
+// Cinematic tilt for the three hero squares
+const serviceCards = document.querySelectorAll('.service-card');
+serviceCards.forEach(card => {
+  card.addEventListener('pointermove', (event) => {
+    const rect = card.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    card.style.setProperty('--tiltX', `${x * 10}deg`);
+    card.style.setProperty('--tiltY', `${-y * 10}deg`);
+  });
+
+  card.addEventListener('pointerleave', () => {
+    card.style.setProperty('--tiltX', '0deg');
+    card.style.setProperty('--tiltY', '0deg');
+  });
+});
 
 // Inject simple monochrome icons into the social buttons (keeps it clean / not messy)
 const ICONS = {
