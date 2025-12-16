@@ -291,12 +291,45 @@ gap:22px;
 
 .service-card{
 border:1px solid rgba(255,255,255,.08);
-background:rgba(10,10,10,.55);
+background:radial-gradient(120% 120% at 50% 20%, rgba(201,162,74,.06), rgba(10,10,10,.75));
 overflow:hidden;
 position:relative;
 transform:translateY(14px);
 opacity:0;
 transition:opacity .8s ease, transform .8s ease;
+box-shadow:0 24px 70px rgba(0,0,0,.55), inset 0 0 0 1px rgba(201,162,74,.08);
+}
+
+.service-card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(115deg, transparent 0%, rgba(201,162,74,.04) 32%, rgba(201,162,74,.55) 50%, rgba(244,221,173,.65) 56%, rgba(201,162,74,.18) 64%, transparent 80%);
+transform:translateX(-145%);
+animation:serviceFlash 4.8s cubic-bezier(.65,.05,.36,1) infinite;
+pointer-events:none;
+mix-blend-mode:screen;
+filter:drop-shadow(0 0 18px rgba(201,162,74,.18));
+}
+
+@keyframes serviceFlash{
+0%{transform:translateX(-145%);opacity:0;}
+8%{opacity:.9;}
+50%{transform:translateX(0%);opacity:1;}
+92%{opacity:.9;}
+100%{transform:translateX(145%);opacity:0;}
+}
+
+.service-card::after{
+content:"";
+position:absolute;
+inset:-1px;
+background:linear-gradient(120deg, rgba(201,162,74,.28) 0%, rgba(201,162,74,0) 18%, rgba(201,162,74,0) 82%, rgba(201,162,74,.28) 100%);
+opacity:0;
+transform:translateX(-150%);
+animation:serviceFlash 4.8s cubic-bezier(.65,.05,.36,1) infinite;
+pointer-events:none;
+mix-blend-mode:screen;
 }
 
 .service-card.reveal{opacity:1;transform:translateY(0);}
@@ -509,6 +542,8 @@ border:1px solid rgba(255,255,255,.06);
 *{scroll-behavior:auto;}
 .scroll-arrow{animation:none;}
 .service-card{transition:none;}
+.service-card::before{animation:none;}
+.service-card::after{animation:none;}
 }
 </style>
 </head>
