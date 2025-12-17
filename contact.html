@@ -91,13 +91,20 @@ height:80px;
 .quick-links a{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:10px 16px;letter-spacing:.08em;text-transform:uppercase;font-size:12px;}
 .quick-links a:hover{border-color:var(--goldSoft);color:var(--gold);}
 
-.contact-card{border:1px solid var(--line);padding:20px 20px 18px;display:grid;gap:10px;margin-top:22px;background:rgba(0,0,0,.5);}
-.contact-card label{letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--muted);}
-.contact-card input, .contact-card textarea{width:100%;padding:12px 14px;background:#0c0c0c;border:1px solid var(--line);color:var(--text);font-size:15px;}
+.contact-card{border:1px solid var(--line);padding:26px 24px 24px;display:grid;gap:16px;margin-top:22px;background:linear-gradient(160deg, rgba(12,12,12,.9), rgba(6,6,6,.94));box-shadow:0 14px 36px rgba(0,0,0,.35);}
+.contact-card__grid{display:grid;gap:14px;}
+.contact-card label{letter-spacing:.12em;text-transform:uppercase;font-size:11px;color:var(--muted);}
+.contact-card input, .contact-card textarea, .contact-card select{width:100%;padding:14px 14px;background:rgba(15,15,15,.92);border:1px solid rgba(242,239,233,.16);color:var(--text);font-size:15px;letter-spacing:.01em;border-radius:6px;transition:border-color .18s ease, box-shadow .18s ease;appearance:none;}
+.contact-card select{background-image:linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+background-position:calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
+background-size:6px 6px,6px 6px;
+background-repeat:no-repeat;
+cursor:pointer;}
+.contact-card input:focus, .contact-card textarea:focus, .contact-card select:focus{outline:none;border-color:rgba(201,162,74,.7);box-shadow:0 0 0 1px rgba(201,162,74,.25);}
 .contact-card textarea{min-height:140px;resize:vertical;}
-.contact-card button{margin-top:8px;padding:12px 18px;border:1px solid rgba(201,162,74,.35);background:rgba(38,38,38,.55);color:var(--text);text-transform:uppercase;letter-spacing:.1em;font-weight:700;cursor:pointer;}
-.contact-card button:hover{border-color:rgba(201,162,74,.7);color:var(--gold);}
-.contact-note{color:var(--muted);font-size:14px;line-height:1.6;}
+.contact-card .contact-note{color:var(--muted);font-size:13px;line-height:1.6;}
+.contact-submit{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border:1px solid rgba(201,162,74,.55);background:var(--gold);color:#0f0f0f;text-transform:uppercase;letter-spacing:.16em;font-weight:820;cursor:pointer;box-shadow:0 12px 24px rgba(201,162,74,.22);border-radius:6px;min-width:120px;transition:transform .12s ease, box-shadow .18s ease;}
+.contact-submit:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(201,162,74,.28);}
 
 .vh-footer{background:var(--footerSheen),var(--footerLuster),var(--footerGradient);color:var(--text);padding:28px 16px 32px;border-top:1px solid rgba(201,162,74,.38);box-shadow:0 -18px 40px rgba(0,0,0,.45);}
 .vh-footer__inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center;}
@@ -168,14 +175,37 @@ height:80px;
 <div class="section-inner">
 <h2>Reach out</h2>
 <div class="contact-card">
-<label for="name">Name</label>
-<input id="name" type="text" name="name" placeholder="Your name" />
-<label for="email">Email</label>
+<div class="contact-card__grid">
+<label for="full-name">Full name</label>
+<input id="full-name" type="text" name="full-name" placeholder="Type your name" />
+
+<label for="email">Email address</label>
 <input id="email" type="email" name="email" placeholder="you@example.com" />
-<label for="message">Project details</label>
-<textarea id="message" name="message" placeholder="Date, location, and what you need"></textarea>
-<button type="button" onclick="window.location='mailto:info@vanguardhosts.com'">Send email</button>
-<p class="contact-note">Prefer socials? Reach us on Instagram, Facebook, TikTok, or YouTube. We answer quickly.</p>
+
+<label for="phone">Phone number (optional)</label>
+<input id="phone" type="tel" name="phone" placeholder="(555) 123-4567" />
+
+<label for="service">Service needed</label>
+<select id="service" name="service">
+<option value="" disabled selected>Select a service</option>
+<option value="dj">DJ</option>
+<option value="photography">Photography</option>
+<option value="marketing">Marketing</option>
+<option value="multiple">Multiple Services</option>
+<option value="consultation">Consultation</option>
+</select>
+
+<label for="event-date">Event date (if applicable)</label>
+<input id="event-date" type="text" name="event-date" placeholder="MM / DD / YYYY" />
+
+<label for="event-location">Event location</label>
+<input id="event-location" type="text" name="event-location" placeholder="Venue / City" />
+
+<label for="message">Message</label>
+<textarea id="message" name="message" placeholder="Tell us what you need, event details, or questions..."></textarea>
+</div>
+<button class="contact-submit" type="button" onclick="window.location='mailto:info@vanguardhosts.com'">Send</button>
+<p class="contact-note">We respect your inbox—no spam, just the details you ask for.</p>
 </div>
 
 <div class="quick-links" style="margin-top:28px;">
