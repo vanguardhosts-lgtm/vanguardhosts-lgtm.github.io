@@ -12,7 +12,7 @@
 --gold:#c9a24a;
 --goldSoft:rgba(201,162,74,.35);
 --blueNuance:#0a0f1b;
---footerGradient:linear-gradient(to bottom, var(--blueNuance) 0%, #000 40%, #000 100%);
+--footerGradient:linear-gradient(to bottom, var(--blueNuance) 0% 4%, #000 4% 96%, var(--blueNuance) 96% 100%);
 --footerSheen:linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0));
 --footerLuster:linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0));
 }
@@ -252,7 +252,7 @@ animation:arrowFloat 1.6s ease-in-out infinite;
 /* SECTION BELOW */
 .section{
 padding:120px 24px;
-background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.85) 14%, rgba(0,0,0,1) 100%);
+background:linear-gradient(to bottom, var(--blueNuance) 0% 3%, #000 3% 97%, var(--blueNuance) 97% 100%);
 }
 
 .section-inner{max-width:1200px;margin:0 auto;}
