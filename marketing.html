@@ -140,9 +140,9 @@ box-shadow:0 0 0 1px rgba(0,0,0,.1);
 
 /* HERO */
 .hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
+    min-height:50vh;
+    display:flex;
+    flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
@@ -152,108 +152,55 @@ overflow:hidden;
 }
 
 .title{
-font-size:clamp(40px, 6vw, 100px);
-letter-spacing:.2em;
-font-weight:800;
-text-transform:uppercase;
-color:var(--text);
+    font-size:clamp(40px, 6vw, 100px);
+    letter-spacing:.2em;
+    font-weight:800;
+    text-transform:uppercase;
+    color:var(--text);
+    margin:0;
 }
 
-/* BOOK NOW (prettier, same position) */
-.cta-btn{
-margin-top:40px;
-padding:16px 64px;
-cursor:pointer;
-background:rgba(38,38,38,.55);
-color:var(--text);
-font-weight:700;
-letter-spacing:.12em;
-font-size:12px;
-text-transform:uppercase;
-border:1px solid rgba(201,162,74,.35);
-border-radius:0;
-position:relative;
-transition:transform .12s ease-out, background .2s ease-out, border-color .2s ease-out;
-outline:none;
+.title .hero-cta{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:22px 52px;
+    border:1px solid rgba(201,162,74,.35);
+    background:rgba(38,38,38,.55);
+    color:var(--text);
+    font:inherit;
+    letter-spacing:inherit;
+    text-transform:inherit;
+    text-decoration:none;
+    position:relative;
+    cursor:pointer;
+    transition:transform .12s ease-out, background .2s ease-out, border-color .2s ease-out;
 }
 
-/* square gold ring */
-.cta-btn::after{
-content:"";
-position:absolute;
-inset:-7px;
-border:1px solid rgba(201,162,74,.35);
-pointer-events:none;
-transition:inset .2s ease-out, border-color .2s ease-out, box-shadow .2s ease-out;
+.title .hero-cta::after{
+    content:"";
+    position:absolute;
+    inset:-7px;
+    border:1px solid rgba(201,162,74,.35);
+    pointer-events:none;
+    transition:inset .2s ease-out, border-color .2s ease-out, box-shadow .2s ease-out;
 }
 
-.cta-btn:hover{
-background:rgba(55,55,55,.6);
-border-color:rgba(201,162,74,.7);
-transform:translateY(-1px);
+.title .hero-cta:hover{
+    background:rgba(55,55,55,.6);
+    border-color:rgba(201,162,74,.7);
+    transform:translateY(-1px);
 }
 
-.cta-btn:hover::after{
-inset:-9px;
-border-color:rgba(201,162,74,.7);
-box-shadow:0 0 24px rgba(201,162,74,.08);
+.title .hero-cta:hover::after{
+    inset:-9px;
+    border-color:rgba(201,162,74,.7);
+    box-shadow:0 0 24px rgba(201,162,74,.08);
 }
 
-.cta-btn:active{transform:translateY(1px);}
+.title .hero-cta:active{transform:translateY(1px);}
 
-/* SCROLL DOWN AREA */
-.scroll-down-wrapper{
-position:absolute;
-bottom:44px;
-left:50%;
-transform:translateX(-50%);
-text-align:center;
-font-size:11px;
-letter-spacing:.18em;
-text-transform:uppercase;
-user-select:none;
-}
 
-.scroll-label{margin-bottom:12px;display:block;}
-
-/* remove logo in middle (per request) */
-.scroll-logo{display:none;}
-
-/* clickable circle button */
-.scroll-btn{
-height:66px;
-width:66px;
-border-radius:999px;
-border:2px solid var(--gold); /* gold ring */
-background:transparent;
-display:inline-flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-transition:transform .18s ease-out, box-shadow .25s ease-out, border-color .25s ease-out;
-}
-
-.scroll-btn:hover{
-transform:translateY(-2px);
-border-color:rgba(201,162,74,.95);
-box-shadow:0 0 26px rgba(201,162,74,.12);
-}
-
-.scroll-btn:active{transform:translateY(1px);}
-
-.scroll-arrow{
-font-size:22px;
-line-height:1;
-color:var(--text);
-display:block;
-transform:translateY(0);
-animation:arrowFloat 1.6s ease-in-out infinite;
-}
-
-@keyframes arrowFloat{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(6px)}
-}
 
 /* SECTION BELOW */
 .section{
@@ -519,7 +466,6 @@ border:1px solid rgba(255,255,255,.06);
 
 @media (prefers-reduced-motion: reduce){
 *{scroll-behavior:auto;}
-.scroll-arrow{animation:none;}
 .service-card{transition:none;}
 }
 </style>
@@ -551,16 +497,7 @@ border:1px solid rgba(255,255,255,.06);
 
 <!-- HERO SECTION -->
 <main class="hero">
-<h1 class="title">VANGUARD HOSTS</h1>
-<button class="cta-btn" type="button">BOOK NOW</button>
-
-<!-- SCROLL DOWN (clickable) -->
-<div class="scroll-down-wrapper">
-<span class="scroll-label">SCROLL DOWN</span>
-<button class="scroll-btn" id="scrollBtn" type="button" aria-label="Scroll to services">
-<span class="scroll-arrow">&#8595;</span>
-</button>
-</div>
+    <h1 class="title"><a class="hero-cta" href="contact.html">BOOK MARKETING</a></h1>
 </main>
 </div>
 
@@ -653,7 +590,6 @@ border:1px solid rgba(255,255,255,.06);
 // Mobile menu toggle
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
-const ctaBtn = document.querySelector('.cta-btn');
 
 function setExpanded(val){
 menuToggle.setAttribute('aria-expanded', String(val));
@@ -664,12 +600,6 @@ const isOpen = navLinks.classList.toggle('open');
 setExpanded(isOpen);
 });
 
-if (ctaBtn) {
-ctaBtn.addEventListener('click', () => {
-window.location.href = 'contact.html';
-});
-}
-
 menuToggle.addEventListener('keydown', (e) => {
 if (e.key === 'Enter' || e.key === ' ') {
 e.preventDefault();
@@ -677,16 +607,9 @@ menuToggle.click();
 }
 });
 
-// Make the arrow button actually scroll down
-const scrollBtn = document.getElementById('scrollBtn');
-scrollBtn.addEventListener('click', () => {
-const target = document.getElementById('services');
-if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
 // Close menu when a nav link is clicked (mobile)
 navLinks.querySelectorAll('a').forEach(a => {
-a.addEventListener('click', () => {
+    a.addEventListener('click', () => {
 if (navLinks.classList.contains('open')) {
 navLinks.classList.remove('open');
 setExpanded(false);
