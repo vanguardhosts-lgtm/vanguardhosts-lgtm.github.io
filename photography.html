@@ -5,193 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VANGUARD HOSTS | Photography</title>
   <style>
-    :root {
-      --bg:#000;
-      --text:#f2efe9;
-      --muted:rgba(242,239,233,.72);
-      --line:rgba(242,239,233,.18);
-      --gold:#c9a24a;
-      --goldSoft:rgba(201,162,74,.35);
-      --blueNuance:#0a0f1b;
-      --footerGradient:linear-gradient(to bottom, var(--blueNuance) 0%, #000 40%, #000 100%);
-    }
-
+    :root{--bg:#050505;--panel:#0f0f10;--text:#f2efe9;--muted:rgba(242,239,233,.8);--line:rgba(242,239,233,.16);--gold:#c9a24a;}
     *{box-sizing:border-box;margin:0;padding:0;}
-
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-    }
-
+    body{background:var(--bg);color:var(--text);font-family:"Helvetica Neue",Arial,sans-serif;line-height:1.6;}
     a{color:inherit;}
+    header{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(5,5,5,.9);border-bottom:1px solid var(--line);}    
+    .nav{max-width:1100px;margin:0 auto;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:12px;}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+    .logo img{height:54px;width:54px;object-fit:contain;}
+    .logo span{font-size:14px;letter-spacing:.18em;}
+    .nav-links{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .nav a{text-decoration:none;position:relative;padding-bottom:4px;}
+    .nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:.2s ease;}
+    .nav a:hover::after{transform:scaleX(1);}    
 
-    .page-shell{min-height:100vh;background:linear-gradient(to bottom, #000 0%, #000 60%, var(--blueNuance) 100%);}
+    main{max-width:1100px;margin:0 auto;padding:70px 18px 90px;}
+    .eyebrow{letter-spacing:.3em;font-size:11px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+    h1{font-size:clamp(32px,5vw,52px);letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;}
+    .lede{color:var(--muted);margin-bottom:24px;max-width:720px;}
 
-    .logo{position:fixed;top:20px;left:24px;z-index:20;display:flex;align-items:center;justify-content:center;height:72px;text-decoration:none;}
-    .logo img{height:58px;width:58px;object-fit:contain;display:block;}
+    .hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:18px;}
+    .hero img{width:100%;height:320px;object-fit:cover;border:1px solid var(--line);background:#000;}
 
-    .nav{position:fixed;top:20px;right:24px;z-index:20;display:flex;align-items:center;gap:24px;font-weight:700;letter-spacing:.15em;font-size:12px;text-transform:uppercase;height:72px;}
-    .nav-links{display:flex;align-items:center;gap:24px;}
-    .nav a{color:var(--text);text-decoration:none;position:relative;}
-    .nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--text);transition:width .2s ease-out;}
-    .nav a:hover::after{width:100%;}
+    .panel{background:var(--panel);border:1px solid var(--line);padding:18px;margin-top:12px;}
+    .panel h3{margin-bottom:10px;letter-spacing:.08em;text-transform:uppercase;}
+    .panel p{color:var(--muted);}
 
-    .menu-toggle{display:none;align-items:center;gap:10px;cursor:pointer;font-weight:700;letter-spacing:.15em;font-size:14px;text-transform:uppercase;line-height:1;padding:10px 10px;border:1px solid rgba(201,162,74,.25);background:rgba(0,0,0,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
-    .menu-icon{width:22px;height:14px;display:flex;flex-direction:column;justify-content:space-between;}
-    .menu-icon span{display:block;height:2px;background:var(--gold);border-radius:999px;box-shadow:0 0 0 1px rgba(0,0,0,.1);}
+    .cta-row{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;}
+    .cta{border:1px solid var(--gold);padding:11px 18px;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;font-weight:800;background:rgba(201,162,74,.12);}    
 
-    .sub-hero{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px;position:relative;overflow:hidden;}
-    .title{font-size:clamp(32px,5vw,72px);letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:var(--text);margin-bottom:24px;}
-    .cta-btn{margin-top:0;padding:14px 56px;cursor:pointer;background:rgba(38,38,38,.55);color:var(--text);font-weight:700;letter-spacing:.12em;font-size:12px;text-transform:uppercase;border:1px solid var(--goldSoft);border-radius:0;position:relative;transition:transform .12s ease-out, background .2s ease-out, border-color .2s ease-out;outline:none;}
-    .cta-btn::after{content:"";position:absolute;inset:-6px;border:1px solid var(--goldSoft);pointer-events:none;transition:inset .2s ease-out, border-color .2s ease-out, box-shadow .2s ease-out;}
-    .cta-btn:hover{background:rgba(55,55,55,.6);border-color:rgba(201,162,74,.7);transform:translateY(-1px);}
-    .cta-btn:hover::after{inset:-8px;border-color:rgba(201,162,74,.7);box-shadow:0 0 24px rgba(201,162,74,.08);}
-    .cta-btn:active{transform:translateY(1px);}
+    footer{border-top:1px solid var(--line);padding:32px 18px 36px;background:#000;margin-top:40px;}
+    .footer-inner{max-width:1100px;margin:0 auto;display:grid;gap:14px;text-align:center;}
+    .footer-title{letter-spacing:.2em;font-weight:900;text-transform:uppercase;}
+    .footer-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+    .footer-actions a{border:1px solid var(--gold);padding:10px 18px;text-decoration:none;letter-spacing:.14em;text-transform:uppercase;font-weight:800;background:rgba(201,162,74,.12);}
+    .footer-fine{font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
 
-    main{max-width:1100px;margin:0 auto;padding:90px 18px 110px;}
-    .section-heading{letter-spacing:.3em;font-size:11px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;text-align:center;}
-    .lede{color:var(--muted);max-width:760px;margin:0 auto 42px;text-align:center;}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:18px;}
-    .card{background:rgba(10,10,10,.6);border:1px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:10px;box-shadow:0 12px 30px rgba(0,0,0,.3);}
-    .card img{width:100%;height:220px;object-fit:cover;border:1px solid var(--line);background:#000;}
-    .card span{font-size:13px;color:var(--muted);letter-spacing:.05em;text-align:center;}
-    .fine-copy{color:var(--muted);font-size:14px;text-align:center;max-width:780px;margin:0 auto;}
-
-    .vh-footer{background:var(--footerGradient);color:var(--text);padding:34px 16px 38px;border-top:1px solid rgba(201,162,74,.38);box-shadow:0 -18px 40px rgba(0,0,0,.45);}
-    .vh-footer__inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center;}
-    .vh-footer__header{display:flex;align-items:center;justify-content:center;gap:14px;flex-direction:column;}
-    .vh-footer__logo{height:48px;width:auto;object-fit:contain;}
-    .vh-footer__title{letter-spacing:.22em;font-size:clamp(20px,3vw,28px);font-weight:850;text-transform:uppercase;text-align:center;}
-    .vh-footer__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:1px solid rgba(242,239,233,.14);border-bottom:1px solid rgba(242,239,233,.14);padding:20px 0;width:100%;justify-items:center;}
-    .vh-footer__block{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;padding:4px 6px;width:100%;}
-    .vh-footer__button{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border:1px solid rgba(201,162,74,.6);background:rgba(0,0,0,.35);color:var(--text);text-decoration:none;letter-spacing:.14em;font-size:12px;font-weight:820;text-transform:uppercase;transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;box-shadow:0 0 0 1px rgba(255,255,255,.04), 0 12px 30px rgba(0,0,0,.4);width:100%;min-height:32px;position:relative;overflow:hidden;}
-    .vh-footer__button::before{content:"";position:absolute;inset:-2px;background:linear-gradient(120deg, transparent 0%, rgba(201,162,74,.05) 30%, rgba(201,162,74,.28) 50%, rgba(201,162,74,.05) 70%, transparent 100%);transform:translateX(-120%);animation:footerFlash 2.4s linear infinite;pointer-events:none;z-index:0;}
-    .vh-footer__button:hover{border-color:rgba(201,162,74,.88);box-shadow:0 10px 28px rgba(201,162,74,.18), 0 16px 36px rgba(0,0,0,.55);transform:translateY(-1px);}
-    .vh-footer__button span{position:relative;z-index:1;}
-    .vh-footer__fineprint{color:rgba(242,239,233,.7);font-size:9px;line-height:1.6;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;letter-spacing:.1em;text-transform:uppercase;}
-
-    @keyframes footerFlash{0%{transform:translateX(-120%);}100%{transform:translateX(120%);}}
-
-    @media (max-width: 768px){
-      .nav-links{display:none;position:fixed;top:86px;right:24px;flex-direction:column;background:rgba(0,0,0,.95);padding:16px 20px;gap:16px;border:1px solid rgba(255,255,255,.06);}
-      .nav-links.open{display:flex;}
-      .menu-toggle{display:flex;}
-      .nav{gap:12px;}
-      main{padding-top:120px;}
-    }
-
-    @media(max-width:720px){
-      .card img{height:200px;}
-      .vh-footer__grid{grid-template-columns:1fr;}
-    }
+    @media(max-width:720px){.nav{flex-direction:column;align-items:flex-start;}main{padding-top:48px;}.hero img{height:240px;}}
   </style>
 </head>
 <body>
-  <div class="page-shell">
-    <a class="logo" href="index.html" aria-label="Vanguard Hosts home">
-      <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo" />
-    </a>
-
-    <header class="nav">
-      <div class="nav-links" id="navLinks">
+  <header>
+    <nav class="nav">
+      <a class="logo" href="index.html" aria-label="Vanguard Hosts home">
+        <img src="three-pillars-logo.png" alt="Vanguard Hosts logo" />
+        <span>Vanguard Hosts</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
         <a href="dj.html">DJ</a>
         <a href="photography.html">Photography</a>
         <a href="marketing.html">Marketing</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="navLinks" aria-expanded="false">
-        <div class="menu-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <span style="color: var(--text);">MENU</span>
+    </nav>
+  </header>
+
+  <main>
+    <div class="eyebrow">Photography</div>
+    <h1>Photos that feel like the night</h1>
+    <p class="lede">Documentary-style coverage with clean edits, true-to-tone color, and plenty of candids. We keep you present while we capture it all.</p>
+
+    <div class="hero">
+      <img src="assets/photography.png" alt="Event photography highlight" />
+      <img src="assets/marketing.png" alt="Crowd celebration" />
+    </div>
+
+    <div class="panel">
+      <h3>What you get</h3>
+      <p>Full galleries with quick sneak peeks, direction when you want it, and a low-profile footprint when you don’t. Perfect for weddings, nightlife, corporate events, and branded experiences.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Delivery</h3>
+      <p>Selections delivered in 48 hours, full albums within one week, and ready-to-post formats sized for socials.</p>
+    </div>
+
+    <div class="cta-row">
+      <a class="cta" href="contact.html">Check Availability</a>
+      <a class="cta" href="mailto:vanguard.hosts@gmail.com">Email Us</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-title">Ready to Book</div>
+      <div class="footer-actions">
+        <a href="tel:+18454645180">+1 (845) 464-5180</a>
+        <a href="mailto:vanguard.hosts@gmail.com">vanguard.hosts@gmail.com</a>
+        <a href="contact.html">Book Online</a>
       </div>
-    </header>
-
-    <section class="sub-hero">
-      <h1 class="title">Photography</h1>
-      <button class="cta-btn" type="button" onclick="window.location.href='contact.html'">Book DJ</button>
-    </section>
-
-    <main>
-      <div class="section-heading">Photography</div>
-      <p class="lede">You live it. We capture it. Candid shots, posed moments, and crisp edits that keep the night immortalized.</p>
-
-      <div class="gallery">
-        <div class="card">
-          <img src="assets/photography.png" alt="Photography highlight" />
-          <span>Moments in motion</span>
-        </div>
-        <div class="card">
-          <img src="assets/dj.png" alt="DJ coverage" />
-          <span>Coverage from the booth</span>
-        </div>
-        <div class="card">
-          <img src="assets/marketing.png" alt="Crowd energy" />
-          <span>Energy from the floor</span>
-        </div>
-      </div>
-
-      <p class="fine-copy">From prep to final delivery, we keep a low footprint and deliver images that feel as good as the night itself.</p>
-    </main>
-
-    <footer class="vh-footer">
-      <div class="vh-footer__inner">
-        <div class="vh-footer__header">
-          <img class="vh-footer__logo" src="three-pillars-logo.png" alt="Vanguard Hosts logo" />
-          <h2 class="vh-footer__title">Ready to Book</h2>
-        </div>
-        <div class="vh-footer__grid">
-          <div class="vh-footer__block">
-            <a class="vh-footer__button" href="tel:+18454645180"><span>+1 (845) 464-5180</span></a>
-          </div>
-          <div class="vh-footer__block">
-            <a class="vh-footer__button" href="mailto:vanguard.hosts@gmail.com"><span>vanguard.hosts@gmail.com</span></a>
-          </div>
-          <div class="vh-footer__block">
-            <a class="vh-footer__button" href="contact.html"><span>Book Online</span></a>
-          </div>
-        </div>
-        <div class="vh-footer__fineprint">
-          <div>Based in Hudson Valley, NY · Serving NY, NJ, CT, PA, MA &amp; USA-Wide</div>
-          <div>© 2025 Vanguard Hosts · All Rights Reserved</div>
-        </div>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    function setExpanded(val){
-      menuToggle.setAttribute('aria-expanded', String(val));
-    }
-
-    menuToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      setExpanded(isOpen);
-    });
-
-    menuToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuToggle.click();
-      }
-    });
-
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        if (navLinks.classList.contains('open')) {
-          navLinks.classList.remove('open');
-          setExpanded(false);
-        }
-      });
-    });
-  </script>
+      <div class="footer-fine">Based in Hudson Valley, NY · Serving NY, NJ, CT, PA, MA &amp; USA-Wide · © 2025 Vanguard Hosts</div>
+    </div>
+  </footer>
 </body>
 </html>
