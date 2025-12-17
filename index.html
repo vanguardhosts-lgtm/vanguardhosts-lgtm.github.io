@@ -14,13 +14,13 @@
   --blueNuance:#0a0f1b;
   --footerGradient:linear-gradient(
     180deg,
-    rgba(6,9,17,1) 0%,
-    rgba(5,8,14,.98) 32%,
-    rgba(3,4,9,.97) 58%,
+    rgba(10,15,27,1) 0%,
+    rgba(8,11,20,.98) 38%,
+    rgba(4,6,12,.96) 64%,
     rgba(0,0,0,.98) 100%
   );
-  --footerSheen:radial-gradient(circle at 50% -120px, rgba(18,22,33,.4), transparent 48%);
-  --footerLuster:linear-gradient(180deg, rgba(5,8,14,.72) 0%, rgba(0,0,0,0) 34%);
+  --footerSheen:linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0));
+  --footerLuster:linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0));
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -464,9 +464,9 @@ background:rgba(0,0,0,.25);
 .vh-footer::before{
   content:"";
   position:absolute;
-  inset:-56px 0 auto 0;
-  height:140px;
-  background:linear-gradient(180deg, rgba(10,15,27,0) 0%, rgba(7,10,17,.55) 48%, rgba(6,9,17,.92) 100%);
+  inset:-42px 0 auto 0;
+  height:110px;
+  background:linear-gradient(180deg, rgba(10,15,27,0) 0%, rgba(10,15,27,.65) 50%, rgba(10,15,27,1) 100%);
   z-index:0;
   pointer-events:none;
 }
