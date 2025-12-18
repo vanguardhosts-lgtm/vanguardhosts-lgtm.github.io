@@ -13,11 +13,17 @@
 --gold:#c9a24a;
 --goldSoft:rgba(201,162,74,.35);
 --blueNuance:#0a0f1b;
+--footerGradient:linear-gradient(to bottom, var(--blueNuance) 0%, #000 40%, #000 100%);
+--footerSheen:linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0));
+--footerLuster:linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0));
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
 
+html{scroll-behavior:smooth;}
+
 body{
+margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
@@ -28,9 +34,15 @@ overflow-x:hidden;
 min-height:70vh;
 background:linear-gradient(to bottom, #000 0%, #000 60%, var(--blueNuance) 100%);
 position:relative;
-padding-bottom:80px;
+padding:120px 16px 80px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:24px;
 }
 
+/* FIXED LOGO (TOP LEFT) */
 .logo{
 position:fixed;
 top:20px;
@@ -39,15 +51,21 @@ z-index:20;
 display:flex;
 align-items:center;
 justify-content:center;
-height:80px;
+height:80px; /* alignment anchor */
 text-decoration:none;
 }
 
-.logo img{height:64px;width:64px;object-fit:contain;display:block;}
+.logo img{
+height:64px;
+width:64px;
+object-fit:contain;
+display:block;
+}
 
+/* NAV (TOP RIGHT) */
 .nav{
 position:fixed;
-top:20px;
+top:20px; /* align with logo */
 right:24px;
 z-index:20;
 display:flex;
@@ -57,194 +75,32 @@ font-weight:600;
 letter-spacing:.15em;
 font-size:12px;
 text-transform:uppercase;
-height:80px;
+height:80px; /* alignment anchor */
 }
 
-.nav-links{display:flex;align-items:center;gap:24px;}
-
-.nav a{color:var(--text);text-decoration:none;position:relative;}
-.nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--text);transition:width .2s ease-out;}
-.nav a:hover::after{width:100%;}
-
-.menu-toggle{display:none;align-items:center;gap:10px;cursor:pointer;font-weight:700;letter-spacing:.15em;font-size:14px;text-transform:uppercase;line-height:1;padding:10px 10px;border:1px solid rgba(201,162,74,.25);background:rgba(0,0,0,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
-.menu-icon{width:22px;height:14px;display:flex;flex-direction:column;justify-content:space-between;}
-.menu-icon span{display:block;height:2px;background:var(--gold);border-radius:999px;box-shadow:0 0 0 1px rgba(0,0,0,.1);}
-
-.hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px;position:relative;overflow:hidden;}
-.title{font-size:clamp(40px, 6vw, 88px);letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:var(--text);}
-.detail-lede{max-width:720px;margin:20px auto 0;color:var(--muted);font-size:18px;line-height:1.7;}
-
-.detail{padding:64px 24px;border-top:1px solid var(--line);background:linear-gradient(180deg, rgba(0,0,0,.75), #000);}
-.section-inner{max-width:900px;margin:0 auto;}
-.section-inner h2{font-size:32px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
-.section-inner p{color:var(--muted);font-size:18px;line-height:1.8;max-width:760px;}
-.quick-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
-.quick-links a{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:10px 16px;letter-spacing:.08em;text-transform:uppercase;font-size:12px;}
-.quick-links a:hover{border-color:var(--goldSoft);color:var(--gold);}
-
-.contact-card{border:1px solid var(--line);padding:20px 20px 18px;display:grid;gap:10px;margin-top:22px;background:rgba(0,0,0,.5);}
-.contact-card label{letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--muted);}
-.contact-card input, .contact-card textarea{width:100%;padding:12px 14px;background:#0c0c0c;border:1px solid var(--line);color:var(--text);font-size:15px;}
-.contact-card textarea{min-height:140px;resize:vertical;}
-.contact-card button{margin-top:8px;padding:12px 18px;border:1px solid rgba(201,162,74,.35);background:rgba(38,38,38,.55);color:var(--text);text-transform:uppercase;letter-spacing:.1em;font-weight:700;cursor:pointer;}
-.contact-card button:hover{border-color:rgba(201,162,74,.7);color:var(--gold);}
-.contact-note{color:var(--muted);font-size:14px;line-height:1.6;}
-
-@media (max-width: 768px){
-.nav{gap:12px;}
-.nav-links{display:none;position:fixed;top:86px;right:24px;flex-direction:column;background:rgba(0,0,0,.95);padding:16px 20px;gap:16px;border:1px solid rgba(255,255,255,.06);}
-.nav-links.open{display:flex;}
-.menu-toggle{display:flex;}
-.title{font-size:clamp(36px, 9vw, 72px);}
-}
-</style>
-</head>
-<body>
-<div class="page-wrapper" id="top">
-<a class="logo" href="index.html" aria-label="Vanguard Hosts home">
-<img src="three-pillars-logo.png" alt="Vanguard Hosts Logo" />
-</a>
-
-<header class="nav">
-<div class="nav-links" id="navLinks">
-<a href="dj.html">DJ</a>
-<a href="photography.html">Photography</a>
-<a href="marketing.html">Marketing</a>
-<a href="contact.html">Contact</a>
-</div>
-<div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="navLinks" aria-expanded="false">
-<div class="menu-icon" aria-hidden="true">
-<span></span>
-<span></span>
-<span></span>
-</div>
-<span style="color: var(--text);">MENU</span>
-</div>
-</header>
-
-<main class="hero">
-<h1 class="title">Contact</h1>
-<p class="detail-lede">Drop your date, location, and what you need (DJ / Photo / Marketing). We’ll reply fast with availability and a plan.</p>
-</main>
-</div>
-
-<section class="detail">
-<div class="section-inner">
-<h2>Reach out</h2>
-<div class="contact-card">
-<label for="name">Name</label>
-<input id="name" type="text" name="name" placeholder="Your name" />
-<label for="email">Email</label>
-<input id="email" type="email" name="email" placeholder="you@example.com" />
-<label for="message">Project details</label>
-<textarea id="message" name="message" placeholder="Date, location, and what you need"></textarea>
-<button type="button" onclick="window.location='mailto:info@vanguardhosts.com'">Send email</button>
-<p class="contact-note">Prefer socials? Reach us on Instagram, Facebook, TikTok, or YouTube. We answer quickly.</p>
-</div>
-
-<div class="quick-links" style="margin-top:28px;">
-<a href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener">Facebook</a>
-<a href="https://www.tiktok.com/@vanguard.events_" target="_blank" rel="noopener">TikTok</a>
-<a href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener">YouTube</a>
-<a href="index.html">Back to home</a>
-</div>
-</div>
-</section>
-
-<script>
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-
-function setExpanded(val){
-menuToggle.setAttribute('aria-expanded', String(val));
+.nav-links{
+display:flex;
+align-items:center;
+gap:24px;
 }
 
-menuToggle.addEventListener('click', () => {
-const isOpen = navLinks.classList.toggle('open');
-setExpanded(isOpen);
-});
-
-menuToggle.addEventListener('keydown', (e) => {
-if (e.key === 'Enter' || e.key === ' ') {
-e.preventDefault();
-menuToggle.click();
-}
-});
-</script>
-</body>
-</html>
--------------------------------------------------------------------------
-
-
-
-dj html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vanguard Hosts | DJ</title>
-<style>
-:root{
---bg:#000;
---text:#f2efe9;
---muted:rgba(242,239,233,.72);
---line:rgba(242,239,233,.18);
---gold:#c9a24a;
---goldSoft:rgba(201,162,74,.35);
---blueNuance:#0a0f1b;
-}
-
-*{box-sizing:border-box;margin:0;padding:0;}
-
-body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-background:var(--bg);
+.nav a{
 color:var(--text);
-overflow-x:hidden;
-}
-
-.page-wrapper{
-min-height:70vh;
-background:linear-gradient(to bottom, #000 0%, #000 60%, var(--blueNuance) 100%);
-position:relative;
-padding-bottom:80px;
-}
-
-.logo{
-position:fixed;
-top:20px;
-left:24px;
-z-index:20;
-display:flex;
-align-items:center;
-justify-content:center;
-height:80px;
 text-decoration:none;
+position:relative;
 }
 
-.logo img{height:64px;width:64px;object-fit:contain;display:block;}
-
-.nav{
-position:fixed;
-top:20px;
-right:24px;
-z-index:20;
-display:flex;
-align-items:center;
-gap:24px;
-font-weight:600;
-letter-spacing:.15em;
-font-size:12px;
-text-transform:uppercase;
-height:80px;
+.nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-4px;
+width:0;
+height:1px;
+background:var(--text);
+transition:width .2s ease-out;
 }
 
-.nav-links{display:flex;align-items:center;gap:24px;}
-
-.nav a{color:var(--text);text-decoration:none;position:relative;}
-.nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--text);transition:width .2s ease-out;}
 .nav a:hover::after{width:100%;}
 
 .menu-toggle{
@@ -254,7 +110,7 @@ gap:10px;
 cursor:pointer;
 font-weight:700;
 letter-spacing:.15em;
-font-size:14px;
+font-size:14px; /* MENU word bigger */
 text-transform:uppercase;
 line-height:1;
 padding:10px 10px;
@@ -264,42 +120,160 @@ backdrop-filter:blur(6px);
 -webkit-backdrop-filter:blur(6px);
 }
 
-.menu-icon{width:22px;height:14px;display:flex;flex-direction:column;justify-content:space-between;}
-.menu-icon span{display:block;height:2px;background:var(--gold);border-radius:999px;box-shadow:0 0 0 1px rgba(0,0,0,.1);}
+.menu-toggle:hover{border-color:rgba(201,162,74,.55);}
 
-.hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px;position:relative;overflow:hidden;}
-.title{font-size:clamp(40px, 6vw, 88px);letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:var(--text);}
-.detail-lede{max-width:720px;margin:20px auto 0;color:var(--muted);font-size:18px;line-height:1.7;}
+.menu-icon{
+width:22px; /* tiny bigger */
+height:14px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
 
-.cta-btn{margin-top:32px;padding:16px 64px;display:inline-block;cursor:pointer;background:rgba(38,38,38,.55);color:var(--text);font-weight:700;letter-spacing:.12em;font-size:12px;text-transform:uppercase;border:1px solid rgba(201,162,74,.35);border-radius:0;position:relative;transition:transform .12s ease-out, background .2s ease-out, border-color .2s ease-out;outline:none;text-decoration:none;}
-.cta-btn::after{content:"";position:absolute;inset:-7px;border:1px solid rgba(201,162,74,.35);pointer-events:none;transition:inset .2s ease-out, border-color .2s ease-out, box-shadow .2s ease-out;}
-.cta-btn:hover{background:rgba(55,55,55,.6);border-color:rgba(201,162,74,.7);transform:translateY(-1px);}
-.cta-btn:hover::after{inset:-9px;border-color:rgba(201,162,74,.7);box-shadow:0 0 24px rgba(201,162,74,.08);}
-.cta-btn:active{transform:translateY(1px);}
+.menu-icon span{
+display:block;
+height:2px;
+background:var(--gold); /* gold bars */
+border-radius:999px;
+box-shadow:0 0 0 1px rgba(0,0,0,.1);
+}
 
-.detail{padding:64px 24px;border-top:1px solid var(--line);background:linear-gradient(180deg, rgba(0,0,0,.75), #000);}
-.section-inner{max-width:960px;margin:0 auto;}
-.section-inner h2{font-size:32px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
-.section-inner p{color:var(--muted);font-size:18px;line-height:1.8;max-width:760px;}
-.quick-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
-.quick-links a{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:10px 16px;letter-spacing:.08em;text-transform:uppercase;font-size:12px;}
-.quick-links a:hover{border-color:var(--goldSoft);color:var(--gold);}
+.contact-title{
+font-size:clamp(40px, 6vw, 88px);
+letter-spacing:.18em;
+font-weight:800;
+text-transform:uppercase;
+text-align:center;
+}
 
-.grid{display:grid;gap:24px;margin-top:26px;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));}
-.pill-box{border:1px solid var(--line);padding:16px 18px;line-height:1.6;color:var(--muted);}
-.pill-title{color:var(--text);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:6px;}
+.contact-card{
+width:100%;
+max-width:760px;
+background:rgba(0,0,0,.38);
+border:1px solid var(--line);
+box-shadow:0 24px 55px rgba(0,0,0,.55), 0 6px 24px rgba(0,0,0,.45);
+border-radius:18px;
+padding:32px 24px 28px;
+backdrop-filter:blur(6px);
+}
+
+.contact-kicker{letter-spacing:.3em;text-transform:uppercase;font-weight:760;color:var(--muted);font-size:12px;text-align:center;margin-bottom:12px;}
+.contact-heading{text-align:center;font-size:clamp(28px,4vw,36px);letter-spacing:.18em;text-transform:uppercase;font-weight:850;margin-bottom:10px;}
+.contact-subtitle{text-align:center;color:var(--muted);letter-spacing:.06em;margin-bottom:28px;line-height:1.6;}
+
+.contact-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.contact-form__field{display:flex;flex-direction:column;gap:8px;align-items:center;}
+.contact-form label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:760;color:var(--muted);text-align:center;}
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+background:rgba(255,255,255,.02);
+border:1px solid var(--line);
+color:var(--text);
+padding:12px 14px;
+border-radius:10px;
+font-size:15px;
+transition:border-color .18s ease, box-shadow .18s ease, transform .12s ease;
+width:100%;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+outline:none;
+border-color:var(--gold);
+box-shadow:0 8px 24px rgba(201,162,74,.18);
+transform:translateY(-1px);
+}
+
+.contact-form textarea{min-height:120px;resize:vertical;}
+
+.contact-form__fullwidth{grid-column:1 / -1;}
+
+.contact-form__hint{color:var(--muted);font-size:12px;}
+
+.contact-form__actions{display:flex;justify-content:flex-end;grid-column:1/-1;margin-top:8px;}
+
+.vh-footer__button,
+.contact-submit{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border:1px solid rgba(201,162,74,.6);background:rgba(0,0,0,.35);color:var(--text);text-decoration:none;letter-spacing:.14em;font-size:12px;font-weight:820;text-transform:uppercase;transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;box-shadow:0 0 0 1px rgba(255,255,255,.04), 0 12px 30px rgba(0,0,0,.4);width:100%;min-height:44px;position:relative;overflow:hidden;cursor:pointer;}
+.vh-footer__button{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border:1px solid rgba(201,162,74,.6);background:rgba(0,0,0,.35);color:var(--text);text-decoration:none;letter-spacing:.14em;font-size:12px;font-weight:820;text-transform:uppercase;transition:border-color .2s ease, box-shadow .2s ease, transform .12s ease;box-shadow:0 0 0 1px rgba(255,255,255,.04), 0 12px 30px rgba(0,0,0,.4);width:100%;min-height:44px;position:relative;overflow:hidden;cursor:pointer;}
+.vh-footer__button::before,
+.contact-submit::before{content:"";position:absolute;inset:-2px;background:linear-gradient(120deg, transparent 0%, rgba(201,162,74,.05) 30%, rgba(201,162,74,.28) 50%, rgba(201,162,74,.05) 70%, transparent 100%);transform:translateX(-120%);animation:footerFlash 2.4s linear infinite;pointer-events:none;z-index:0;}
+.vh-footer__button:hover,
+.contact-submit:hover{border-color:rgba(201,162,74,.88);box-shadow:0 10px 28px rgba(201,162,74,.18), 0 16px 36px rgba(0,0,0,.55);transform:translateY(-1px);}
+.vh-footer__button span,
+.contact-submit span{position:relative;z-index:1;}
+
+.contact-submit{background:var(--gold);border-color:var(--gold);color:#000;}
+.contact-submit::before{display:none;}
+.contact-submit:hover{border-color:var(--gold);box-shadow:0 10px 28px rgba(201,162,74,.18), 0 16px 36px rgba(0,0,0,.55);}
+
+.thankyou-banner{
+margin-top:18px;
+padding:14px 16px;
+border:1px solid rgba(201,162,74,.45);
+background:rgba(201,162,74,.08);
+color:var(--text);
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:760;
+letter-spacing:.08em;
+text-transform:uppercase;
+opacity:0;
+transform:translateY(10px) scale(.98);
+transition:opacity .24s ease, transform .24s ease;
+pointer-events:none;
+}
+
+.thankyou-banner.is-active{opacity:1;transform:translateY(0) scale(1);}
+
+@keyframes footerFlash{0%{transform:translateX(-120%);}100%{transform:translateX(120%);}}
+
+.vh-footer{background:var(--footerSheen),var(--footerLuster),var(--footerGradient);color:var(--text);padding:28px 16px 32px;border-top:1px solid rgba(201,162,74,.38);box-shadow:0 -18px 40px rgba(0,0,0,.45);}
+.vh-footer__inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center;}
+.vh-footer__header{display:flex;align-items:center;justify-content:center;gap:14px;flex-direction:column;}
+.vh-footer__logo{height:48px;width:auto;object-fit:contain;}
+.vh-footer__title{letter-spacing:.22em;font-size:clamp(20px,3vw,28px);font-weight:850;text-transform:uppercase;text-align:center;}
+.vh-footer__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:1px solid rgba(242,239,233,.14);border-bottom:1px solid rgba(242,239,233,.14);padding:20px 0;width:100%;justify-items:center;}
+.vh-footer__block{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;padding:4px 6px;width:100%;}
+.vh-footer__block:first-child{border-left:none;}
+.vh-footer__email{color:var(--text);text-decoration:none;font-size:15px;font-weight:680;}
+.vh-footer__email:hover{text-decoration:underline;}
+.vh-footer__fineprint{color:rgba(242,239,233,.7);font-size:9px;line-height:1.6;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;letter-spacing:.1em;text-transform:uppercase;}
+
+@media (max-width: 900px){
+.page-wrapper{padding:90px 14px 70px;}
+.contact-card{padding:26px 18px;}
+.vh-footer{padding:34px 16px 38px;}
+.vh-footer__inner{gap:20px;}
+.vh-footer__header{flex-direction:column;align-items:center;gap:12px;}
+.vh-footer__title{width:100%;}
+.vh-footer__grid{grid-template-columns:1fr;border-left:none;border-right:none;}
+.vh-footer__block{border-left:none;padding-top:14px;}
+.vh-footer__block:first-child{padding-top:0;}
+}
 
 @media (max-width: 768px){
-.nav{gap:12px;}
-.nav-links{display:none;position:fixed;top:86px;right:24px;flex-direction:column;background:rgba(0,0,0,.95);padding:16px 20px;gap:16px;border:1px solid rgba(255,255,255,.06);}
+.nav-links{
+display:none;
+position:fixed;
+top:86px;
+right:24px;
+flex-direction:column;
+background:rgba(0,0,0,.95);
+padding:16px 20px;
+gap:16px;
+border:1px solid rgba(255,255,255,.06);
+}
+
 .nav-links.open{display:flex;}
 .menu-toggle{display:flex;}
-.title{font-size:clamp(36px, 9vw, 72px);}
 }
 </style>
 </head>
 <body>
-<div class="page-wrapper" id="top">
 <a class="logo" href="index.html" aria-label="Vanguard Hosts home">
 <img src="three-pillars-logo.png" alt="Vanguard Hosts Logo" />
 </a>
@@ -321,63 +295,150 @@ backdrop-filter:blur(6px);
 </div>
 </header>
 
-<main class="hero">
-<h1 class="title">DJ</h1>
-<p class="detail-lede">Weddings. Birthdays. Corporate. Clubs. Clean transitions, real crowd control, and a premium look that keeps the floor full.</p>
-<a class="cta-btn" href="contact.html">Book DJ</a>
-</main>
+<div class="page-wrapper">
+<h1 class="contact-title">CONTACT</h1>
+<div class="contact-card">
+
+<form id="inquiry-form" class="contact-form">
+<div class="contact-form__field">
+<label for="fullName">Full Name</label>
+<input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Type Your Name" required />
+</div>
+<div class="contact-form__field">
+<label for="email">Email Address</label>
+<input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+</div>
+<div class="contact-form__field">
+<label for="phone">Phone Number <span class="contact-form__hint">(optional)</span></label>
+<input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567" />
+</div>
+<div class="contact-form__field">
+<label for="service">Service Needed</label>
+<select id="service" name="service" required>
+<option value="" disabled selected>Select a service</option>
+<option>DJ</option>
+<option>Photography</option>
+<option>Marketing</option>
+</select>
+</div>
+<div class="contact-form__field">
+<label for="eventDate">Event Date</label>
+<input id="eventDate" name="eventDate" type="date" required />
+</div>
+<div class="contact-form__field">
+<label for="eventLocation">Event Location</label>
+<input id="eventLocation" name="eventLocation" type="text" placeholder="Venue / City" required />
+</div>
+<div class="contact-form__field contact-form__fullwidth">
+<label for="message">Message</label>
+<textarea id="message" name="message" placeholder="Tell us what you need, event details or questions..." required></textarea>
+</div>
+<div class="contact-form__actions">
+<button type="submit" class="contact-submit"><span>Send</span></button>
+</div>
+</form>
+
+<div class="thankyou-banner" role="status" aria-live="polite">Thank you! We will contact you shortly.</div>
+</div>
 </div>
 
-<section class="detail">
-<div class="section-inner">
-<h2>What you get</h2>
-<div class="grid">
-<div class="pill-box">
-<div class="pill-title">Versatile playlists</div>
-Seamless mixing across genres with clean transitions tailored to your crowd.
+<footer class="vh-footer">
+<div class="vh-footer__inner">
+<div class="vh-footer__header">
+<img class="vh-footer__logo" src="three-pillars-logo.png" alt="Vanguard Hosts logo" />
+<h2 class="vh-footer__title">Ready to Book</h2>
 </div>
-<div class="pill-box">
-<div class="pill-title">Pro audio + lighting</div>
-Premium sound, wireless mics, dancefloor lighting, and a sleek booth look.
+<div class="vh-footer__grid">
+<div class="vh-footer__block">
+<a class="vh-footer__button" href="tel:+18454645180"><span>+1 (845) 464-5180</span></a>
 </div>
-<div class="pill-box">
-<div class="pill-title">Crowd-first hosting</div>
-Real MC energy when you want it, smooth vibes when you don't.
+<div class="vh-footer__block">
+<a class="vh-footer__button" href="mailto:vanguard.hosts@gmail.com"><span>vanguard.hosts@gmail.com</span></a>
 </div>
-</div>
-
-<div class="quick-links" style="margin-top:28px;">
-<a href="https://www.instagram.com/vanguard.events_/" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener">Facebook</a>
-<a href="https://www.tiktok.com/@vanguard.events_" target="_blank" rel="noopener">TikTok</a>
-<a href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener">YouTube</a>
-<a href="index.html">Back to home</a>
+<div class="vh-footer__block">
+<a class="vh-footer__button" href="contact.html"><span>Book Online</span></a>
 </div>
 </div>
-</section>
+<div class="vh-footer__fineprint">
+<div>Based in Hudson Valley, NY · Serving NY, NJ, CT, PA, MA &amp; USA-Wide</div>
+<div>© 2025 Vanguard Hosts · All Rights Reserved</div>
+</div>
+</div>
+</footer>
 
 <script>
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
 function setExpanded(val){
-menuToggle.setAttribute('aria-expanded', String(val));
+menuToggle?.setAttribute('aria-expanded', String(val));
 }
 
-menuToggle.addEventListener('click', () => {
-const isOpen = navLinks.classList.toggle('open');
-setExpanded(isOpen);
+menuToggle?.addEventListener('click', () => {
+const isOpen = navLinks?.classList.toggle('open');
+setExpanded(Boolean(isOpen));
 });
 
-menuToggle.addEventListener('keydown', (e) => {
+menuToggle?.addEventListener('keydown', (e) => {
 if (e.key === 'Enter' || e.key === ' ') {
 e.preventDefault();
 menuToggle.click();
 }
 });
 
-document.querySelectorAll('.icon-link').forEach(a => {
-a.innerHTML = '';
+navLinks?.querySelectorAll('a').forEach(a => {
+a.addEventListener('click', () => {
+if (navLinks.classList.contains('open')) {
+navLinks.classList.remove('open');
+setExpanded(false);
+}
+});
+});
+
+const form = document.getElementById('inquiry-form');
+const thankYou = document.querySelector('.thankyou-banner');
+
+const buildMailtoBody = (data) => {
+return [
+`Full Name: ${data.fullName}`,
+`Email: ${data.email}`,
+`Phone: ${data.phone || 'N/A'}`,
+`Service Needed: ${data.service}`,
+`Event Date: ${data.eventDate}`,
+`Event Location: ${data.eventLocation}`,
+'',
+'Message:',
+data.message
+].join('\n');
+};
+
+const showThankYou = () => {
+thankYou.classList.add('is-active');
+setTimeout(() => {
+thankYou.classList.remove('is-active');
+}, 3800);
+};
+
+form?.addEventListener('submit', (event) => {
+event.preventDefault();
+const formData = new FormData(form);
+const details = {
+fullName: formData.get('fullName')?.toString().trim() || 'Guest',
+email: formData.get('email')?.toString().trim() || '',
+phone: formData.get('phone')?.toString().trim(),
+service: formData.get('service')?.toString().trim() || 'Event',
+eventDate: formData.get('eventDate')?.toString() || 'TBD',
+eventLocation: formData.get('eventLocation')?.toString().trim() || 'TBD',
+message: formData.get('message')?.toString().trim() || 'No message provided.'
+};
+
+const subject = `New Inquiry from ${details.fullName}`;
+const mailtoBody = buildMailtoBody(details);
+const mailtoLink = `mailto:vanguard.hosts@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailtoBody)}`;
+
+window.location.href = mailtoLink;
+showThankYou();
+form.reset();
 });
 </script>
 </body>
