@@ -33,8 +33,18 @@
       position:relative;
       padding:120px 16px 80px;
       display:flex;
+      flex-direction:column;
       align-items:center;
       justify-content:center;
+      gap:24px;
+    }
+
+    .contact-title{
+      font-size:clamp(40px, 6vw, 88px);
+      letter-spacing:.18em;
+      font-weight:800;
+      text-transform:uppercase;
+      text-align:center;
     }
 
     .contact-card{
@@ -144,8 +154,8 @@
 </head>
 <body>
   <div class="page-wrapper">
+    <h1 class="contact-title">CONTACT</h1>
     <div class="contact-card">
-      <h1 class="contact-heading">CONTACT</h1>
 
       <form id="inquiry-form" class="contact-form">
         <div class="contact-form__field">
