@@ -90,8 +90,9 @@ backdrop-filter:blur(6px);
 .menu-icon span{display:block;height:2px;background:var(--gold);border-radius:999px;box-shadow:0 0 0 1px rgba(0,0,0,.1);}
 
 .hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px;position:relative;overflow:hidden;}
-.title{font-size:clamp(40px, 6vw, 88px);letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:var(--text);}
-.detail-lede{max-width:720px;margin:20px auto 0;color:var(--muted);font-size:18px;line-height:1.7;}
+.hero-grid{width:100%;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px;}
+.hero .section-title{margin-bottom:0;}
+.hero-services{width:100%;}
 
 .services-section{padding:120px 24px;background:linear-gradient(to bottom, var(--blueNuance) 0%, #000 18%, #000 82%, var(--blueNuance) 100%);}
 .services-section .section-inner{max-width:1200px;margin:0 auto;}
@@ -203,43 +204,39 @@ backdrop-filter:blur(6px);
 </header>
 
 <main class="hero">
-<h1 class="title">DJ</h1>
+  <div class="hero-grid">
+    <div class="section-title">CHOOSE YOUR LANE</div>
+    <div class="services-grid hero-services">
+      <article class="service-card" data-reveal>
+        <div class="service-media">
+          <img src="assets/dj.png" alt="DJ performance" />
+        </div>
+        <div class="service-body">
+          <div class="service-caption">Your night starts here</div>
+        </div>
+      </article>
+
+      <article class="service-card" data-reveal>
+        <div class="service-media">
+          <img src="assets/photography.png" alt="Photography" />
+        </div>
+        <div class="service-body">
+          <div class="service-caption">You live it. We capture it</div>
+        </div>
+      </article>
+
+      <article class="service-card" data-reveal>
+        <div class="service-media">
+          <img src="assets/marketing.png" alt="Marketing" />
+        </div>
+        <div class="service-body">
+          <div class="service-caption">We make you seen</div>
+        </div>
+      </article>
+    </div>
+  </div>
 </main>
 </div>
-
-<section class="services-section" id="services">
-<div class="section-inner">
-<div class="section-title">CHOOSE YOUR LANE</div>
-<div class="services-grid">
-<article class="service-card" data-reveal>
-<div class="service-media">
-<img src="assets/dj.png" alt="DJ performance" />
-</div>
-<div class="service-body">
-<div class="service-caption">Your night starts here</div>
-</div>
-</article>
-
-<article class="service-card" data-reveal>
-<div class="service-media">
-<img src="assets/photography.png" alt="Photography" />
-</div>
-<div class="service-body">
-<div class="service-caption">You live it. We capture it</div>
-</div>
-</article>
-
-<article class="service-card" data-reveal>
-<div class="service-media">
-<img src="assets/marketing.png" alt="Marketing" />
-</div>
-<div class="service-body">
-<div class="service-caption">We make you seen</div>
-</div>
-</article>
-</div>
-</div>
-</section>
 
 <section class="detail">
 <div class="section-inner">
