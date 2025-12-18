@@ -28,10 +28,12 @@ overflow-x:hidden;
 }
 
 .page-wrapper{
-min-height:70vh;
-background:linear-gradient(to bottom, #000 0%, #000 60%, var(--blueNuance) 100%);
-position:relative;
-padding-bottom:80px;
+  min-height:70vh;
+  background:radial-gradient(circle at 20% 20%, rgba(201,162,74,.08), transparent 30%),
+              radial-gradient(circle at 80% 10%, rgba(255,255,255,.06), transparent 32%),
+              linear-gradient(to bottom, #000 0%, #000 60%, var(--blueNuance) 100%);
+  position:relative;
+  padding-bottom:110px;
 }
 
 .logo{
@@ -77,28 +79,36 @@ height:80px;
 .title{font-size:clamp(40px, 6vw, 88px);letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:var(--text);}
 .detail-lede{max-width:720px;margin:20px auto 0;color:var(--muted);font-size:18px;line-height:1.7;}
 
-.detail{padding:64px 24px;border-top:1px solid var(--line);background:linear-gradient(180deg, rgba(0,0,0,.75), #000);}
-.section-inner{max-width:900px;margin:0 auto;}
+.detail{padding:88px 24px;border-top:1px solid var(--line);background:linear-gradient(180deg, rgba(0,0,0,.86), rgba(4,4,4,.98));}
+.section-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:38px;align-items:start;}
 .section-inner h2{font-size:32px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
 .section-inner p{color:var(--muted);font-size:18px;line-height:1.8;max-width:760px;}
 .quick-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
 .quick-links a{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:10px 16px;letter-spacing:.08em;text-transform:uppercase;font-size:12px;}
 .quick-links a:hover{border-color:var(--goldSoft);color:var(--gold);}
 
-.contact-card{border:1px solid var(--line);padding:16px 18px;display:grid;gap:16px;margin:0 auto;margin-top:36px;background:linear-gradient(160deg, rgba(12,12,12,.9), rgba(6,6,6,.94));box-shadow:0 14px 36px rgba(0,0,0,.35);max-width:560px;width:100%;}
-.contact-card__grid{display:grid;gap:14px;}
+.contact-card{border:1px solid rgba(242,239,233,.08);padding:22px 24px;display:grid;gap:18px;margin:0 auto;margin-top:24px;background:linear-gradient(135deg, rgba(18,18,18,.86), rgba(9,9,9,.95));box-shadow:0 26px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(242,239,233,.03);max-width:720px;width:100%;border-radius:16px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+.contact-card__grid{display:grid;gap:18px;grid-template-columns:repeat(2, minmax(0,1fr));}
+.form-field{display:flex;flex-direction:column;gap:10px;}
+.form-field--full{grid-column:1 / -1;}
 .contact-card label{letter-spacing:.12em;text-transform:uppercase;font-size:11px;color:var(--muted);}
-.contact-card input, .contact-card textarea, .contact-card select{width:100%;padding:14px 14px;background:rgba(15,15,15,.92);border:1px solid rgba(242,239,233,.16);color:var(--text);font-size:15px;letter-spacing:.01em;border-radius:6px;transition:border-color .18s ease, box-shadow .18s ease;appearance:none;}
+.contact-card input, .contact-card textarea, .contact-card select{width:100%;padding:15px 15px;background:rgba(12,12,12,.92);border:1px solid rgba(242,239,233,.16);color:var(--text);font-size:15px;letter-spacing:.01em;border-radius:10px;transition:border-color .18s ease, box-shadow .18s ease, transform .12s ease;appearance:none;box-shadow:0 10px 32px rgba(0,0,0,.26);}
 .contact-card select{background-image:linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
 background-position:calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
 background-size:6px 6px,6px 6px;
 background-repeat:no-repeat;
 cursor:pointer;}
-.contact-card input:focus, .contact-card textarea:focus, .contact-card select:focus{outline:none;border-color:rgba(201,162,74,.7);box-shadow:0 0 0 1px rgba(201,162,74,.25);}
-.contact-card textarea{min-height:140px;resize:vertical;}
+.contact-card input:focus, .contact-card textarea:focus, .contact-card select:focus{outline:none;border-color:rgba(201,162,74,.9);box-shadow:0 14px 40px rgba(201,162,74,.18);transform:translateY(-1px);}
+.contact-card textarea{min-height:180px;resize:vertical;grid-column:1 / -1;}
 .contact-card .contact-note{color:var(--muted);font-size:13px;line-height:1.6;}
-.contact-submit{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border:1px solid rgba(201,162,74,.55);background:var(--gold);color:#0f0f0f;text-transform:uppercase;letter-spacing:.16em;font-weight:820;cursor:pointer;box-shadow:0 12px 24px rgba(201,162,74,.22);border-radius:6px;min-width:120px;transition:transform .12s ease, box-shadow .18s ease;}
-.contact-submit:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(201,162,74,.28);}
+.contact-submit{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 22px;border:1px solid rgba(201,162,74,.75);background:linear-gradient(120deg, #f1d187, var(--gold));color:#0f0f0f;text-transform:uppercase;letter-spacing:.16em;font-weight:850;cursor:pointer;box-shadow:0 22px 46px rgba(201,162,74,.32);border-radius:12px;min-width:160px;transition:transform .12s ease, box-shadow .18s ease;}
+.contact-submit:hover{transform:translateY(-1px);box-shadow:0 26px 54px rgba(201,162,74,.36);}
+
+.contact-layout{display:flex;flex-direction:column;gap:18px;align-items:flex-start;}
+.contact-panel{border:1px solid rgba(242,239,233,.1);border-radius:14px;padding:22px 24px;box-shadow:0 22px 48px rgba(0,0,0,.42), 0 0 0 1px rgba(242,239,233,.04);background:linear-gradient(120deg, rgba(12,12,12,.92), rgba(8,8,8,.94));}
+.contact-panel h2{margin-bottom:12px;}
+.contact-panel p{margin-bottom:12px;}
+.contact-meta{display:grid;gap:10px;font-size:15px;color:var(--muted);}
 
 .vh-footer{background:var(--footerSheen),var(--footerLuster),var(--footerGradient);color:var(--text);padding:28px 16px 32px;border-top:1px solid rgba(201,162,74,.38);box-shadow:0 -18px 40px rgba(0,0,0,.45);}
 .vh-footer__inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center;}
@@ -117,6 +127,11 @@ cursor:pointer;}
 .vh-footer__email:hover{text-decoration:underline;}
 .vh-footer__fineprint{color:rgba(242,239,233,.7);font-size:9px;line-height:1.6;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;letter-spacing:.1em;text-transform:uppercase;}
 
+@media (max-width: 1100px){
+.section-inner{grid-template-columns:1fr;}
+.contact-card{max-width:860px;}
+}
+
 @media (max-width: 900px){
 .vh-footer{padding:34px 16px 38px;}
 .vh-footer__inner{gap:20px;}
@@ -129,12 +144,14 @@ cursor:pointer;}
 
 @media (max-width: 768px){
 .nav{gap:12px;}
-.nav-links{display:none;position:fixed;top:86px;right:24px;flex-direction:column;background:rgba(0,0,0,.95);padding:16px 20px;gap:16px;border:1px solid rgba(255,255,255,.06);} 
+.nav-links{display:none;position:fixed;top:86px;right:24px;flex-direction:column;background:rgba(0,0,0,.95);padding:16px 20px;gap:16px;border:1px solid rgba(255,255,255,.06);}
 .nav-links.open{display:flex;}
 .menu-toggle{display:flex;}
 .title{font-size:clamp(36px, 9vw, 72px);}
 .hero{min-height:auto;justify-content:flex-start;padding-top:140px;padding-bottom:90px;}
-.contact-card{max-width:520px;margin-left:auto;margin-right:auto;}
+.section-inner{grid-template-columns:1fr;}
+.contact-card{max-width:100%;}
+.contact-card__grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -165,33 +182,58 @@ cursor:pointer;}
 <h1 class="title">Contact</h1>
   <section class="detail">
 <div class="section-inner">
+  <div class="contact-layout">
+    <div class="contact-panel">
+      <h2>Tell us about your event</h2>
+      <p>From nightlife to bespoke celebrations, our team responds promptly with tailored recommendations.</p>
+      <div class="contact-meta">
+        <span><strong style="color:var(--text);">Direct email:</strong> hello@vanguardhosts.com</span>
+        <span><strong style="color:var(--text);">Hours:</strong> Mon – Sun, 10a – 10p CST</span>
+        <span><strong style="color:var(--text);">Average reply:</strong> Under 24 hours</span>
+      </div>
+    </div>
+  </div>
 <form class="contact-card" action="mailto:YOUR_EMAIL" method="post" enctype="text/plain">
 <div class="contact-card__grid">
-<label for="full-name">Full name</label>
-<input id="full-name" type="text" name="full-name" placeholder="Type your name" />
+  <div class="form-field">
+    <label for="full-name">Full name</label>
+    <input id="full-name" type="text" name="full-name" placeholder="Type your name" />
+  </div>
 
-<label for="email">Email address</label>
-<input id="email" type="email" name="email" placeholder="you@example.com" />
+  <div class="form-field">
+    <label for="email">Email address</label>
+    <input id="email" type="email" name="email" placeholder="you@example.com" />
+  </div>
 
-<label for="phone">Phone number (optional)</label>
-<input id="phone" type="tel" name="phone" placeholder="(555) 123-4567" />
+  <div class="form-field">
+    <label for="phone">Phone number (optional)</label>
+    <input id="phone" type="tel" name="phone" placeholder="(555) 123-4567" />
+  </div>
 
-<label for="service">Service needed</label>
-<select id="service" name="service">
-<option value="" disabled selected>Select a service</option>
-<option value="dj">DJ</option>
-<option value="photography">Photography</option>
-<option value="marketing">Marketing</option>
-</select>
+  <div class="form-field">
+    <label for="service">Service needed</label>
+    <select id="service" name="service">
+    <option value="" disabled selected>Select a service</option>
+    <option value="dj">DJ</option>
+    <option value="photography">Photography</option>
+    <option value="marketing">Marketing</option>
+    </select>
+  </div>
 
-<label for="event-date">Event date (if applicable)</label>
-<input id="event-date" type="text" name="event-date" placeholder="MM / DD / YYYY" />
+  <div class="form-field">
+    <label for="event-date">Event date (if applicable)</label>
+    <input id="event-date" type="text" name="event-date" placeholder="MM / DD / YYYY" />
+  </div>
 
-<label for="event-location">Event location</label>
-<input id="event-location" type="text" name="event-location" placeholder="Venue / City" />
+  <div class="form-field">
+    <label for="event-location">Event location</label>
+    <input id="event-location" type="text" name="event-location" placeholder="Venue / City" />
+  </div>
 
-<label for="message">Message</label>
-<textarea id="message" name="message" placeholder="Tell us what you need, event details, or questions..."></textarea>
+  <div class="form-field form-field--full">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="Tell us what you need, event details, or questions..."></textarea>
+  </div>
 </div>
 <button type="submit" class="contact-submit">Send</button>
 </form>
