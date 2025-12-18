@@ -69,13 +69,51 @@ height:80px;
 .nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--text);transition:width .2s ease-out;}
 .nav a:hover::after{width:100%;}
 
-.menu-toggle{display:none;align-items:center;gap:10px;cursor:pointer;font-weight:700;letter-spacing:.15em;font-size:14px;text-transform:uppercase;line-height:1;padding:10px 10px;border:1px solid rgba(201,162,74,.25);background:rgba(0,0,0,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.menu-toggle{
+display:none;
+align-items:center;
+gap:10px;
+cursor:pointer;
+font-weight:700;
+letter-spacing:.15em;
+font-size:14px;
+text-transform:uppercase;
+line-height:1;
+padding:10px 10px;
+border:1px solid rgba(201,162,74,.25);
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(6px);
+-webkit-backdrop-filter:blur(6px);
+}
+
 .menu-icon{width:22px;height:14px;display:flex;flex-direction:column;justify-content:space-between;}
 .menu-icon span{display:block;height:2px;background:var(--gold);border-radius:999px;box-shadow:0 0 0 1px rgba(0,0,0,.1);}
 
-.hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px;position:relative;overflow:hidden;}
+.hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:150px 20px 0;position:relative;overflow:hidden;}
+.hero-grid{width:100%;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px;}
 .title{font-size:clamp(40px, 6vw, 88px);letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:var(--text);}
-.detail-lede{max-width:720px;margin:20px auto 0;color:var(--muted);font-size:18px;line-height:1.7;}
+.hero-services{width:100%;margin-top:clamp(28px, 6vw, 72px);}
+
+.services-section{padding:120px 24px;background:linear-gradient(to bottom, var(--blueNuance) 0%, #000 18%, #000 82%, var(--blueNuance) 100%);}
+.services-section .section-inner{max-width:1200px;margin:0 auto;}
+.services-section .section-title{font-size:clamp(26px, 4vw, 60px);letter-spacing:.22em;text-transform:none;font-weight:900;text-align:center;line-height:1.05;margin-bottom:14px;background:linear-gradient(120deg, var(--text) 0%, var(--gold) 45%, var(--text) 100%);background-size:220% 220%;color:transparent;-webkit-background-clip:text;background-clip:text;animation:headlineGlow 6s ease-in-out infinite;}
+
+@keyframes headlineGlow{
+0%{background-position:0% 50%;text-shadow:0 0 12px rgba(201,162,74,.12);}
+50%{background-position:100% 50%;text-shadow:0 0 22px rgba(201,162,74,.22);}
+100%{background-position:0% 50%;text-shadow:0 0 12px rgba(201,162,74,.12);}
+}
+
+.services-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:22px;}
+
+.service-card{border:1px solid rgba(255,255,255,.08);background:rgba(10,10,10,.55);overflow:hidden;position:relative;transform:translateY(14px);opacity:0;transition:opacity .8s ease, transform .8s ease;}
+.service-card.reveal{opacity:1;transform:translateY(0);}
+.service-media{display:block;position:relative;aspect-ratio: 4 / 3;overflow:hidden;background:#000;}
+.service-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02) contrast(1.02);transform:scale(1.03);transition:transform .55s ease, filter .55s ease;display:block;}
+.service-card:hover .service-media img{transform:scale(1.08);filter:saturate(1.08) contrast(1.06);}
+.service-media::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 35%, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 70%, rgba(0,0,0,.85) 100%);pointer-events:none;}
+.service-body{padding:18px 18px 20px;}
+.service-caption{text-align:center;margin-top:16px;font-size:18px;letter-spacing:.02em;color:var(--text);}
 
 .cta-btn{margin-top:32px;padding:16px 64px;display:inline-block;cursor:pointer;background:rgba(38,38,38,.55);color:var(--text);font-weight:700;letter-spacing:.12em;font-size:12px;text-transform:uppercase;border:1px solid rgba(201,162,74,.35);border-radius:0;position:relative;transition:transform .12s ease-out, background .2s ease-out, border-color .2s ease-out;outline:none;text-decoration:none;}
 .cta-btn::after{content:"";position:absolute;inset:-7px;border:1px solid rgba(201,162,74,.35);pointer-events:none;transition:inset .2s ease-out, border-color .2s ease-out, box-shadow .2s ease-out;}
@@ -83,9 +121,18 @@ height:80px;
 .cta-btn:hover::after{inset:-9px;border-color:rgba(201,162,74,.7);box-shadow:0 0 24px rgba(201,162,74,.08);}
 .cta-btn:active{transform:translateY(1px);}
 
+.icons{display:flex;gap:14px;justify-content:center;margin-top:22px;flex-wrap:wrap;}
+
+.icon-link{height:44px;width:44px;border-radius:999px;border:1px solid rgba(255,255,255,.16);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:var(--text);background:rgba(0,0,0,.35);transition:transform .12s ease, border-color .2s ease, box-shadow .25s ease;}
+
+.icon-link:hover{transform:translateY(-1px);border-color:rgba(201,162,74,.65);box-shadow:0 0 18px rgba(201,162,74,.10);}
+
+.icon-link svg{width:18px;height:18px;display:block;}
+
 .detail{padding:64px 24px;border-top:1px solid var(--line);background:linear-gradient(180deg, rgba(0,0,0,.75), #000);}
 .section-inner{max-width:960px;margin:0 auto;}
 .section-inner h2{font-size:32px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;}
+.section-heading{text-align:center;}
 .section-inner p{color:var(--muted);font-size:18px;line-height:1.8;max-width:760px;}
 .quick-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
 .quick-links a{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:10px 16px;letter-spacing:.08em;text-transform:uppercase;font-size:12px;}
@@ -113,6 +160,9 @@ height:80px;
 .vh-footer__fineprint{color:rgba(242,239,233,.7);font-size:9px;line-height:1.6;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;letter-spacing:.1em;text-transform:uppercase;}
 
 @media (max-width: 900px){
+.services-section{padding:96px 16px;}
+.services-grid{grid-template-columns:1fr;gap:18px;}
+.hero-services{margin-top:clamp(22px, 7vw, 56px);}
 .vh-footer{padding:34px 16px 38px;}
 .vh-footer__inner{gap:20px;}
 .vh-footer__header{flex-direction:column;align-items:center;gap:12px;}
@@ -128,6 +178,7 @@ height:80px;
 .nav-links.open{display:flex;}
 .menu-toggle{display:flex;}
 .title{font-size:clamp(36px, 9vw, 72px);}
+.hero-services{margin-top:clamp(18px, 8vw, 44px);}
 }
 </style>
 </head>
@@ -155,13 +206,49 @@ height:80px;
 </header>
 
 <main class="hero">
-<h1 class="title">Marketing</h1>
+  <div class="hero-grid">
+    <h1 class="title">Marketing</h1>
+    <div class="icons" aria-label="Marketing social links">
+      <a class="icon-link" href="https://www.instagram.com/vanguard.gallery_/" target="_blank" rel="noopener" aria-label="Marketing Instagram"></a>
+      <a class="icon-link" href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener" aria-label="Marketing Facebook"></a>
+      <a class="icon-link" href="https://www.tiktok.com/@vanguard.gallery__" target="_blank" rel="noopener" aria-label="Marketing TikTok"></a>
+      <a class="icon-link" href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener" aria-label="Marketing YouTube"></a>
+    </div>
+    <div class="services-grid hero-services">
+      <article class="service-card" data-reveal>
+        <div class="service-media">
+          <img src="assets/dj.png" alt="DJ performance" />
+        </div>
+        <div class="service-body">
+          <div class="service-caption">Your night starts here</div>
+        </div>
+      </article>
+
+      <article class="service-card" data-reveal>
+        <div class="service-media">
+          <img src="assets/photography.png" alt="Photography" />
+        </div>
+        <div class="service-body">
+          <div class="service-caption">You live it. We capture it</div>
+        </div>
+      </article>
+
+      <article class="service-card" data-reveal>
+        <div class="service-media">
+          <img src="assets/marketing.png" alt="Marketing" />
+        </div>
+        <div class="service-body">
+          <div class="service-caption">We make you seen</div>
+        </div>
+      </article>
+    </div>
+  </div>
 </main>
 </div>
 
 <section class="detail">
 <div class="section-inner">
-<h2>What you get</h2>
+<h2 class="section-heading">What you get</h2>
 <div class="grid">
 <div class="pill-box">
 <div class="pill-title">Concept to cut</div>
@@ -177,13 +264,6 @@ Stabilized motion, clean color, and logo animations that keep you premium.
 </div>
 </div>
 
-<div class="quick-links" style="margin-top:28px;">
-<a href="https://www.instagram.com/vanguard.gallery_/" target="_blank" rel="noopener">Instagram</a>
-<a href="https://www.facebook.com/profile.php?id=61584638296761" target="_blank" rel="noopener">Facebook</a>
-<a href="https://www.tiktok.com/@vanguard.gallery__" target="_blank" rel="noopener">TikTok</a>
-<a href="https://www.youtube.com/@VanguardHosts" target="_blank" rel="noopener">YouTube</a>
-<a href="index.html">Back to home</a>
-</div>
 </div>
 </section>
 
@@ -230,6 +310,38 @@ e.preventDefault();
 menuToggle.click();
 }
 });
+
+const ICONS = {
+instagram: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.6"/><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Z" stroke="currentColor" stroke-width="1.6"/><path d="M17.5 6.6h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>`,
+facebook: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 8.5V7.2c0-.9.6-1.1 1-1.1h1.7V3.5H14c-2.8 0-4 1.7-4 4v1.9H8v2.8h2V21h4v-8.8h2.7l.4-2.8H14Z" fill="currentColor"/></svg>`,
+tiktok: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 3c.6 2.9 2.6 5 5.5 5.4v3.1c-2.1 0-3.9-.7-5.5-2v6.4c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .8 0 1.2.1v3.3c-.4-.2-.8-.3-1.2-.3-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9 2.9-1.3 2.9-2.9V3h3.1Z" fill="currentColor"/></svg>`,
+youtube: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.5 7.7a3 3 0 0 0-2.1-2.1C17.6 5.1 12 5.1 12 5.1s-5.6 0-7.4.5A3 3 0 0 0 2.5 7.7 31 31 0 0 0 2.5 12c0 1.4.1 2.9.5 4.3a3 3 0 0 0 2.1 2.1c1.8.5 7.4.5 7.4.5s5.6 0 7.4-.5a3 3 0 0 0 2.1-2.1c.4-1.4.5-2.9.5-4.3s-.1-2.9-.5-4.3Z" stroke="currentColor" stroke-width="1.2"/><path d="M10.2 9.6v4.8l4.2-2.4-4.2-2.4Z" fill="currentColor"/></svg>`
+};
+
+function iconForHref(href=''){
+const h = href.toLowerCase();
+if (h.includes('instagram')) return ICONS.instagram;
+if (h.includes('facebook')) return ICONS.facebook;
+if (h.includes('tiktok')) return ICONS.tiktok;
+if (h.includes('youtube')) return ICONS.youtube;
+return '';
+}
+
+document.querySelectorAll('.icon-link').forEach(a => {
+a.innerHTML = iconForHref(a.getAttribute('href'));
+});
+
+const revealEls = document.querySelectorAll('[data-reveal]');
+const io = new IntersectionObserver((entries) => {
+entries.forEach((entry) => {
+if (entry.isIntersecting) {
+entry.target.classList.add('reveal');
+io.unobserve(entry.target);
+}
+});
+}, { threshold: 0.18 });
+
+revealEls.forEach(el => io.observe(el));
 </script>
 </body>
 </html>
