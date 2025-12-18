@@ -74,24 +74,8 @@ height:80px;
 .menu-icon span{display:block;height:2px;background:var(--gold);border-radius:999px;box-shadow:0 0 0 1px rgba(0,0,0,.1);}
 
 .hero{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px;position:relative;overflow:hidden;}
-.hero-content{display:flex;flex-direction:column;align-items:center;gap:28px;width:100%;max-width:900px;}
 .title{font-size:clamp(40px, 6vw, 88px);letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:var(--text);}
 .detail-lede{max-width:720px;margin:20px auto 0;color:var(--muted);font-size:18px;line-height:1.7;}
-
-.contact-card{border:1px solid var(--line);padding:16px 18px;display:grid;gap:16px;margin:0 auto;background:linear-gradient(160deg, rgba(12,12,12,.9), rgba(6,6,6,.94));box-shadow:0 14px 36px rgba(0,0,0,.35);max-width:420px;}
-.contact-card__grid{display:grid;gap:14px;}
-.contact-card label{letter-spacing:.12em;text-transform:uppercase;font-size:11px;color:var(--muted);}
-.contact-card input, .contact-card textarea, .contact-card select{width:100%;padding:14px 14px;background:rgba(15,15,15,.92);border:1px solid rgba(242,239,233,.16);color:var(--text);font-size:15px;letter-spacing:.01em;border-radius:6px;transition:border-color .18s ease, box-shadow .18s ease;appearance:none;}
-.contact-card select{background-image:linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
-background-position:calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
-background-size:6px 6px,6px 6px;
-background-repeat:no-repeat;
-cursor:pointer;}
-.contact-card input:focus, .contact-card textarea:focus, .contact-card select:focus{outline:none;border-color:rgba(201,162,74,.7);box-shadow:0 0 0 1px rgba(201,162,74,.25);}
-.contact-card textarea{min-height:140px;resize:vertical;}
-.contact-card .contact-note{color:var(--muted);font-size:13px;line-height:1.6;}
-.contact-submit{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border:1px solid rgba(201,162,74,.55);background:var(--gold);color:#0f0f0f;text-transform:uppercase;letter-spacing:.16em;font-weight:820;cursor:pointer;box-shadow:0 12px 24px rgba(201,162,74,.22);border-radius:6px;min-width:120px;transition:transform .12s ease, box-shadow .18s ease;}
-.contact-submit:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(201,162,74,.28);}
 
 .vh-footer{background:var(--footerSheen),var(--footerLuster),var(--footerGradient);color:var(--text);padding:28px 16px 32px;border-top:1px solid rgba(201,162,74,.38);box-shadow:0 -18px 40px rgba(0,0,0,.45);}
 .vh-footer__inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center;}
@@ -155,37 +139,6 @@ cursor:pointer;}
 <main class="hero">
 <div class="hero-content">
 <h1 class="title">Contact</h1>
-<form class="contact-card" action="mailto:YOUR_EMAIL" method="post" enctype="text/plain">
-<div class="contact-card__grid">
-<label for="full-name">Full name</label>
-<input id="full-name" type="text" name="full-name" placeholder="Type your name" />
-
-<label for="email">Email address</label>
-<input id="email" type="email" name="email" placeholder="you@example.com" />
-
-<label for="phone">Phone number (optional)</label>
-<input id="phone" type="tel" name="phone" placeholder="(555) 123-4567" />
-
-<label for="service">Service needed</label>
-<select id="service" name="service">
-<option value="" disabled selected>Select a service</option>
-<option value="dj">DJ</option>
-<option value="photography">Photography</option>
-<option value="marketing">Marketing</option>
-</select>
-
-<label for="event-date">Event date (if applicable)</label>
-<input id="event-date" type="text" name="event-date" placeholder="MM / DD / YYYY" />
-
-<label for="event-location">Event location</label>
-<input id="event-location" type="text" name="event-location" placeholder="Venue / City" />
-
-<label for="message">Message</label>
-<textarea id="message" name="message" placeholder="Tell us what you need, event details, or questions..."></textarea>
-</div>
-<button type="submit" class="contact-submit">Send</button>
-</form>
-</div>
 </main>
 </div>
 
