@@ -91,7 +91,7 @@ backdrop-filter:blur(6px);
 
 .hero{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 20px;position:relative;overflow:hidden;}
 .hero-grid{width:100%;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:24px;}
-.hero .section-title{margin-bottom:0;}
+.title{font-size:clamp(40px, 6vw, 88px);letter-spacing:.18em;font-weight:800;text-transform:uppercase;color:var(--text);}
 .hero-services{width:100%;margin-top:clamp(28px, 6vw, 72px);}
 
 .services-section{padding:120px 24px;background:linear-gradient(to bottom, var(--blueNuance) 0%, #000 18%, #000 82%, var(--blueNuance) 100%);}
@@ -207,7 +207,7 @@ backdrop-filter:blur(6px);
 
 <main class="hero">
   <div class="hero-grid">
-    <div class="section-title">CHOOSE YOUR LANE</div>
+    <h1 class="title">CHOOSE YOUR LANE</h1>
     <div class="services-grid hero-services">
       <article class="service-card" data-reveal>
         <div class="service-media">
