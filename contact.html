@@ -20,7 +20,10 @@
 
 *{box-sizing:border-box;margin:0;padding:0;}
 
+html{scroll-behavior:smooth;}
+
 body{
+margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
@@ -37,6 +40,102 @@ flex-direction:column;
 align-items:center;
 justify-content:center;
 gap:24px;
+}
+
+/* FIXED LOGO (TOP LEFT) */
+.logo{
+position:fixed;
+top:20px;
+left:24px;
+z-index:20;
+display:flex;
+align-items:center;
+justify-content:center;
+height:80px; /* alignment anchor */
+text-decoration:none;
+}
+
+.logo img{
+height:64px;
+width:64px;
+object-fit:contain;
+display:block;
+}
+
+/* NAV (TOP RIGHT) */
+.nav{
+position:fixed;
+top:20px; /* align with logo */
+right:24px;
+z-index:20;
+display:flex;
+align-items:center;
+gap:24px;
+font-weight:600;
+letter-spacing:.15em;
+font-size:12px;
+text-transform:uppercase;
+height:80px; /* alignment anchor */
+}
+
+.nav-links{
+display:flex;
+align-items:center;
+gap:24px;
+}
+
+.nav a{
+color:var(--text);
+text-decoration:none;
+position:relative;
+}
+
+.nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-4px;
+width:0;
+height:1px;
+background:var(--text);
+transition:width .2s ease-out;
+}
+
+.nav a:hover::after{width:100%;}
+
+.menu-toggle{
+display:none;
+align-items:center;
+gap:10px;
+cursor:pointer;
+font-weight:700;
+letter-spacing:.15em;
+font-size:14px; /* MENU word bigger */
+text-transform:uppercase;
+line-height:1;
+padding:10px 10px;
+border:1px solid rgba(201,162,74,.25);
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(6px);
+-webkit-backdrop-filter:blur(6px);
+}
+
+.menu-toggle:hover{border-color:rgba(201,162,74,.55);}
+
+.menu-icon{
+width:22px; /* tiny bigger */
+height:14px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.menu-icon span{
+display:block;
+height:2px;
+background:var(--gold); /* gold bars */
+border-radius:999px;
+box-shadow:0 0 0 1px rgba(0,0,0,.1);
 }
 
 .contact-title{
@@ -155,9 +254,47 @@ pointer-events:none;
 .vh-footer__block{border-left:none;padding-top:14px;}
 .vh-footer__block:first-child{padding-top:0;}
 }
+
+@media (max-width: 768px){
+.nav-links{
+display:none;
+position:fixed;
+top:86px;
+right:24px;
+flex-direction:column;
+background:rgba(0,0,0,.95);
+padding:16px 20px;
+gap:16px;
+border:1px solid rgba(255,255,255,.06);
+}
+
+.nav-links.open{display:flex;}
+.menu-toggle{display:flex;}
+}
 </style>
 </head>
 <body>
+<a class="logo" href="index.html" aria-label="Vanguard Hosts home">
+<img src="three-pillars-logo.png" alt="Vanguard Hosts Logo" />
+</a>
+
+<header class="nav">
+<div class="nav-links" id="navLinks">
+<a href="dj.html">DJ</a>
+<a href="photography.html">Photography</a>
+<a href="marketing.html">Marketing</a>
+<a href="contact.html">Contact</a>
+</div>
+<div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="navLinks" aria-expanded="false">
+<div class="menu-icon" aria-hidden="true">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<span style="color: var(--text);">MENU</span>
+</div>
+</header>
+
 <div class="page-wrapper">
 <h1 class="contact-title">CONTACT</h1>
 <div class="contact-card">
@@ -230,6 +367,34 @@ pointer-events:none;
 </footer>
 
 <script>
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+function setExpanded(val){
+menuToggle?.setAttribute('aria-expanded', String(val));
+}
+
+menuToggle?.addEventListener('click', () => {
+const isOpen = navLinks?.classList.toggle('open');
+setExpanded(Boolean(isOpen));
+});
+
+menuToggle?.addEventListener('keydown', (e) => {
+if (e.key === 'Enter' || e.key === ' ') {
+e.preventDefault();
+menuToggle.click();
+}
+});
+
+navLinks?.querySelectorAll('a').forEach(a => {
+a.addEventListener('click', () => {
+if (navLinks.classList.contains('open')) {
+navLinks.classList.remove('open');
+setExpanded(false);
+}
+});
+});
+
 const form = document.getElementById('inquiry-form');
 const thankYou = document.querySelector('.thankyou-banner');
 
