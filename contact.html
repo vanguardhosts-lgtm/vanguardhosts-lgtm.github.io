@@ -334,8 +334,8 @@ border:1px solid rgba(255,255,255,.06);
 <input id="eventLocation" name="eventLocation" type="text" placeholder="Venue / City" required />
 </div>
 <div class="contact-form__field contact-form__fullwidth">
-<label for="message">Message</label>
-<textarea id="message" name="message" placeholder="Tell us what you need, event details or questions..." required></textarea>
+<label for="message">Message <span class="contact-form__hint">(optional)</span></label>
+<textarea id="message" name="message" placeholder="Tell us what you need, event details or questions..."></textarea>
 </div>
 <div class="contact-form__actions">
 <button type="submit" class="contact-submit"><span>Send</span></button>
@@ -404,20 +404,6 @@ setExpanded(false);
 const form = document.getElementById('inquiry-form');
 const thankYou = document.querySelector('.thankyou-banner');
 
-const buildMailtoBody = (data) => {
-return [
-`Full Name: ${data.fullName}`,
-`Email: ${data.email}`,
-`Phone: ${data.phone || 'N/A'}`,
-`Service Needed: ${data.service}`,
-`Event Date: ${data.eventDate}`,
-`Event Location: ${data.eventLocation}`,
-'',
-'Message:',
-data.message
-].join('\n');
-};
-
 const showThankYou = () => {
 thankYou.classList.add('is-active');
 setTimeout(() => {
@@ -425,7 +411,7 @@ thankYou.classList.remove('is-active');
 }, 3800);
 };
 
-form?.addEventListener('submit', (event) => {
+form?.addEventListener('submit', async (event) => {
 event.preventDefault();
 const formData = new FormData(form);
 const details = {
@@ -438,13 +424,34 @@ eventLocation: formData.get('eventLocation')?.toString().trim() || 'TBD',
 message: formData.get('message')?.toString().trim() || 'No message provided.'
 };
 
-const subject = `New Inquiry from ${details.fullName}`;
-const mailtoBody = buildMailtoBody(details);
-const mailtoLink = `mailto:vanguard.hosts@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailtoBody)}`;
+try {
+const response = await fetch('https://formsubmit.co/ajax/vanguard.hosts@gmail.com', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+'Accept': 'application/json'
+},
+body: JSON.stringify({
+subject: `New Inquiry from ${details.fullName}`,
+fullName: details.fullName,
+email: details.email,
+phone: details.phone || 'N/A',
+service: details.service,
+eventDate: details.eventDate,
+eventLocation: details.eventLocation,
+message: details.message
+})
+});
 
-window.location.href = mailtoLink;
+if (!response.ok) {
+throw new Error('Submission failed.');
+}
+
 showThankYou();
 form.reset();
+} catch (error) {
+console.error(error);
+}
 });
 </script>
 </body>
